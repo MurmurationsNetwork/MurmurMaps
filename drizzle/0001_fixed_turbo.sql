@@ -1,0 +1,1 @@
+ALTER TABLE `nodes` ADD `has_updated` integer DEFAULT false NOT NULL;

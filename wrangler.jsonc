@@ -1,0 +1,41 @@
+{
+	"name": "murmurations-aggregator",
+	"compatibility_date": "2025-09-15",
+	"compatibility_flags": ["nodejs_compat_v2"],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "murmurations-aggregator-preview",
+			"database_id": "f11249b3-1819-4eb9-ab86-e06a44b16222",
+			"migrations_dir": "drizzle"
+		}
+	],
+	"queues": {
+		"producers": [
+			{
+				"queue": "murmurations-aggregator-queue-preview",
+				"binding": "JOB_QUEUE"
+			}
+		]
+	},
+	"env": {
+		"production": {
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "murmurations-aggregator",
+					"database_id": "2453fcf5-60d9-4563-8eb4-adc04c9b9826",
+					"migrations_dir": "drizzle"
+				}
+			],
+			"queues": {
+				"producers": [
+					{
+						"queue": "murmurations-aggregator-queue",
+						"binding": "JOB_QUEUE"
+					}
+				]
+			}
+		}
+	}
+}

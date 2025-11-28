@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `permissions_version` integer DEFAULT 1 NOT NULL;

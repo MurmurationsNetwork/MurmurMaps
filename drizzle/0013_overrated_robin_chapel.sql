@@ -1,0 +1,1 @@
+ALTER TABLE `clusters` ADD `source_index_id` integer DEFAULT 1 NOT NULL;
