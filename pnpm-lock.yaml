@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@tanstack/svelte-query':
         specifier: ^6.0.9
-        version: 6.0.9(svelte@5.43.15)
+        version: 6.0.9(svelte@5.45.2)
       '@ucans/ucans':
         specifier: ^0.12.0
         version: 0.12.0
@@ -65,7 +65,7 @@ importers:
         version: 2.0.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.2.4
-        version: 7.2.4(@sveltejs/kit@2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(wrangler@4.50.0(@cloudflare/workers-types@4.20251121.0))
+        version: 7.2.4(@sveltejs/kit@2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(wrangler@4.50.0(@cloudflare/workers-types@4.20251128.0))
       '@sveltejs/kit':
         specifier: ^2.49.0
         version: 2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1))
@@ -86,7 +86,7 @@ importers:
         version: 8.21.3
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^6.0.0
-        version: 6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.43.15))(prettier@3.7.1)(svelte@5.43.15)
+        version: 6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)(svelte@5.45.2)
       '@types/json-schema':
         specifier: ^7.0.15
         version: 7.0.15
@@ -137,10 +137,10 @@ importers:
         version: 3.7.1
       prettier-plugin-svelte:
         specifier: ^3.4.0
-        version: 3.4.0(prettier@3.7.1)(svelte@5.43.15)
+        version: 3.4.0(prettier@3.7.1)(svelte@5.45.2)
       prettier-plugin-tailwindcss:
         specifier: ^0.7.1
-        version: 0.7.1(@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.43.15))(prettier@3.7.1)(svelte@5.43.15))(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.43.15))(prettier@3.7.1)
+        version: 0.7.1(@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)(svelte@5.45.2))(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)
       svelte:
         specifier: ^5.45.2
         version: 5.45.2
@@ -3742,9 +3742,9 @@ snapshots:
     dependencies:
       acorn: 8.15.0
 
-  '@sveltejs/adapter-cloudflare@7.2.4(@sveltejs/kit@2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(wrangler@4.50.0(@cloudflare/workers-types@4.20251121.0))':
+  '@sveltejs/adapter-cloudflare@7.2.4(@sveltejs/kit@2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(wrangler@4.50.0(@cloudflare/workers-types@4.20251128.0))':
     dependencies:
-      '@cloudflare/workers-types': 4.20251121.0
+      '@cloudflare/workers-types': 4.20251128.0
       '@sveltejs/kit': 2.49.0(@sveltejs/vite-plugin-svelte@6.2.1(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1)))(svelte@5.45.2)(vite@7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1))
       worktop: 0.8.0-next.18
       wrangler: 4.50.0(@cloudflare/workers-types@4.20251128.0)
@@ -3872,14 +3872,14 @@ snapshots:
 
   '@tanstack/query-core@5.90.11': {}
 
-  '@tanstack/svelte-query@6.0.9(svelte@5.43.15)':
+  '@tanstack/svelte-query@6.0.9(svelte@5.45.2)':
     dependencies:
       '@tanstack/query-core': 5.90.11
-      svelte: 5.43.15
+      svelte: 5.45.2
 
   '@tanstack/table-core@8.21.3': {}
 
-  '@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.43.15))(prettier@3.7.1)(svelte@5.43.15)':
+  '@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)(svelte@5.45.2)':
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
@@ -3891,7 +3891,7 @@ snapshots:
       parse-imports-exports: 0.2.4
       prettier: 3.7.1
     optionalDependencies:
-      prettier-plugin-svelte: 3.4.0(prettier@3.6.2)(svelte@5.45.2)
+      prettier-plugin-svelte: 3.4.0(prettier@3.7.1)(svelte@5.45.2)
       svelte: 5.45.2
     transitivePeerDependencies:
       - supports-color
@@ -4943,17 +4943,17 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-svelte@3.4.0(prettier@3.6.2)(svelte@5.45.2):
+  prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2):
     dependencies:
-      prettier: 3.6.2
+      prettier: 3.7.1
       svelte: 5.45.2
 
-  prettier-plugin-tailwindcss@0.7.1(@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.6.2)(svelte@5.45.2))(prettier@3.6.2)(svelte@5.45.2))(prettier-plugin-svelte@3.4.0(prettier@3.6.2)(svelte@5.45.2))(prettier@3.6.2):
+  prettier-plugin-tailwindcss@0.7.1(@trivago/prettier-plugin-sort-imports@6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)(svelte@5.45.2))(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1):
     dependencies:
       prettier: 3.7.1
     optionalDependencies:
-      '@trivago/prettier-plugin-sort-imports': 6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.6.2)(svelte@5.45.2))(prettier@3.6.2)(svelte@5.45.2)
-      prettier-plugin-svelte: 3.4.0(prettier@3.6.2)(svelte@5.45.2)
+      '@trivago/prettier-plugin-sort-imports': 6.0.0(prettier-plugin-svelte@3.4.0(prettier@3.7.1)(svelte@5.45.2))(prettier@3.7.1)(svelte@5.45.2)
+      prettier-plugin-svelte: 3.4.0(prettier@3.7.1)(svelte@5.45.2)
 
   prettier@3.7.1: {}
 
