@@ -1,5 +1,5 @@
 {
-	"name": "murmurations-aggregator",
+	"name": "murmur-maps",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -16,13 +16,13 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
 		"db:generate": "pnpm exec drizzle-kit generate",
-		"db:migrate": "pnpm exec wrangler d1 migrations apply murmurations-aggregator-preview --local",
-		"db:migrate:preview": "pnpm exec wrangler d1 migrations apply murmurations-aggregator-preview --remote",
-		"db:migrate:prod": "pnpm exec wrangler d1 migrations apply murmurations-aggregator --remote --env production",
+		"db:migrate": "pnpm exec wrangler d1 migrations apply murmur-maps-preview --local",
+		"db:migrate:preview": "pnpm exec wrangler d1 migrations apply murmur-maps-preview --remote",
+		"db:migrate:prod": "pnpm exec wrangler d1 migrations apply murmur-maps --remote --env production",
 		"generate-server-keys": "pnpm exec tsx scripts/generate-server-keys.ts"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20251121.0",
+		"@cloudflare/workers-types": "^4.20251128.0",
 		"@eslint/compat": "^2.0.0",
 		"@eslint/js": "^9.39.1",
 		"@internationalized/date": "^3.10.0",
@@ -53,7 +53,7 @@
 		"lint-staged": "^16.2.7",
 		"mode-watcher": "^1.1.0",
 		"pako": "^2.1.0",
-		"prettier": "^3.6.2",
+		"prettier": "^3.7.1",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.1",
 		"svelte": "^5.45.2",
@@ -68,11 +68,11 @@
 		"typescript-eslint": "^8.48.0",
 		"vite": "^7.2.4",
 		"vite-plugin-devtools-json": "^1.0.0",
-		"vitest": "^3.2.4",
+		"vitest": "^4.0.14",
 		"wrangler": "^4.50.0"
 	},
 	"dependencies": {
-		"@tanstack/svelte-query": "^6.0.8",
+		"@tanstack/svelte-query": "^6.0.9",
 		"@ucans/ucans": "^0.12.0",
 		"diff": "^8.0.2",
 		"drizzle-orm": "^0.44.7",
