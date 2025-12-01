@@ -1,8 +1,8 @@
-# Murmurations Aggregator
+# Murmurations Maps
 
 ## Local Setup Guide
 
-This guide will help you set up and run the Murmurations Aggregator locally. Follow the steps in order to ensure a smooth installation.
+This guide will help you set up and run the Murmurations Maps locally. Follow the steps in order to ensure a smooth installation.
 
 ## 1. Configure Environment Variables
 
@@ -12,7 +12,7 @@ First, copy the example environment file:
 cp .env.example .env
 ```
 
-Second, Set the Aggregator's Tools URL:
+Second, Set the Maps's Tools URL:
 
 ```bash
 PUBLIC_TOOLS_URL=http://localhost:5173
@@ -54,7 +54,7 @@ PRIVATE_SERVER_KEY=SClA0WPgndVIBcYMy9KNc2SVcsEFJEjGQdyxTNHTc+75ciH16VlgrKUcw/x8t
 
 ## 3. Set Up the Database
 
-Murmurations Aggregator uses **Cloudflare D1** as its database.
+Murmurations Maps uses **Cloudflare D1** as its database.
 
 Run the migration command to initialize the local database:
 

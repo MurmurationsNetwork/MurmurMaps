@@ -1,5 +1,5 @@
 {
-	"name": "murmurations-aggregator",
+	"name": "murmur-maps",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -16,9 +16,9 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
 		"db:generate": "pnpm exec drizzle-kit generate",
-		"db:migrate": "pnpm exec wrangler d1 migrations apply murmurations-aggregator-preview --local",
-		"db:migrate:preview": "pnpm exec wrangler d1 migrations apply murmurations-aggregator-preview --remote",
-		"db:migrate:prod": "pnpm exec wrangler d1 migrations apply murmurations-aggregator --remote --env production",
+		"db:migrate": "pnpm exec wrangler d1 migrations apply murmur-maps-preview --local",
+		"db:migrate:preview": "pnpm exec wrangler d1 migrations apply murmur-maps-preview --remote",
+		"db:migrate:prod": "pnpm exec wrangler d1 migrations apply murmur-maps --remote --env production",
 		"generate-server-keys": "pnpm exec tsx scripts/generate-server-keys.ts"
 	},
 	"devDependencies": {
