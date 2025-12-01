@@ -8,7 +8,7 @@ CREATE TABLE `source_indexes` (
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `source_indexes_url_unique` ON `source_indexes` (`url`);
-INSERT INTO `source_indexes` (`url`, `label`, `library_url`, `data_proxy_url`)
+INSERT INTO `source_indexes` (`url`, `label`, `library_url`)
 VALUES
-  ('https://index.murmurations.network', 'Production Index', 'https://library.murmurations.network', 'https://data-proxy.murmurations.network'),
-  ('https://test-index.murmurations.network', 'Test Index', 'https://test-library.murmurations.network', 'https://test-data-proxy.murmurations.network');
+  ('https://index.murmurations.network', 'Production Index', 'https://library.murmurations.network'),
+  ('https://test-index.murmurations.network', 'Test Index', 'https://test-library.murmurations.network');
