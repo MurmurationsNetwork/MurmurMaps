@@ -68,8 +68,8 @@
 		<p>
 			Click the <span class="font-extrabold">Update Nodes</span> button to check for updates to the
 			nodes in that map.
-			<span class="font-extrabold">Manage Nodes</span> enables you to change the published status of
-			nodes without checking for updates.
+			<span class="font-extrabold">Manage Nodes</span> enables you to change the published status of nodes
+			without checking for updates.
 		</p>
 	</div>
 

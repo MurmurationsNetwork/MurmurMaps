@@ -28,14 +28,15 @@ export const GET: RequestHandler = async ({ params, platform }) => {
 	}
 
 	// Get the source index
-	const sourceIndex = await getSourceIndexByUrl(db, cluster.indexUrl);
+	const indexOrigin = new URL(cluster.indexUrl).origin;
+	const sourceIndex = await getSourceIndexByUrl(db, indexOrigin);
 
 	if (!sourceIndex) {
 		return json({ error: 'Source index not found' }, { status: 404 });
 	}
 
 	// Get the schema JSON
-	const schemaUrl = `${sourceIndex?.libraryUrl}/schemas/${schema}`;
+	const schemaUrl = `${sourceIndex?.libraryUrl}/v2/schemas/${schema}`;
 	const res = await fetch(schemaUrl);
 	if (!res.ok) {
 		return json({ error: 'Failed to fetch schema' }, { status: 500 });
