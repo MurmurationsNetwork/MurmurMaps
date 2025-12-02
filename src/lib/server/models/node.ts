@@ -40,6 +40,7 @@ export async function getPublishedNodes(
 
 	return await query.limit(limit).offset(offset).all();
 }
+
 export async function getPublishedMapNodes(
 	db: DrizzleD1Database,
 	clusterUuid: string,
@@ -157,7 +158,8 @@ function buildSearchCondition(
 	const baseCondition = and(
 		eq(nodes.clusterUuid, clusterUuid),
 		eq(nodes.isAvailable, 1),
-		eq(nodes.status, 'published')
+		eq(nodes.status, 'published'),
+		sql`json_valid(${nodes.data}) = 1`
 	);
 
 	const conditions = [baseCondition];
@@ -192,16 +194,22 @@ function buildSearchCondition(
 		for (const [field, value] of Object.entries(enumFilters)) {
 			const jsonPath = `$.${field}`;
 			// Generally, the value in data's JSON is a string, but it might be an array, so we need to check if the value exists in the array
-			conditions.push(
-				sql`(
-					EXISTS (
-						SELECT 1 FROM json_each(json_extract(${nodes.data}, ${jsonPath}))
+			conditions.push(sql`
+				(
+					json_extract(${nodes.data}, ${jsonPath}) = ${value}
+					OR EXISTS (
+						SELECT 1
+						FROM json_each(
+							CASE 
+								WHEN json_valid(json_extract(${nodes.data}, ${jsonPath})) 
+								THEN json_extract(${nodes.data}, ${jsonPath})
+								ELSE '[]'
+							END
+						)
 						WHERE json_each.value = ${value}
 					)
-					OR
-					json_extract(${nodes.data}, ${jsonPath}) = ${value}
-				)`
-			);
+				)
+			`);
 		}
 	}
 
