@@ -52,7 +52,7 @@
 									{#each item.items ?? [] as subItem (subItem.title)}
 										<Sidebar.MenuSubItem>
 											<Sidebar.MenuSubButton>
-												{#snippet child({ props }: { props: Record<string, unknown> })}
+												{#snippet child({ props }: { props: Record })}
 													<a
 														href={subItem.url}
 														{...props}
@@ -72,7 +72,7 @@
 			{:else}
 				<Sidebar.MenuItem>
 					<Sidebar.MenuButton tooltipContent={item.title}>
-						{#snippet child({ props }: { props: Record<string, unknown> })}
+						{#snippet child({ props }: { props: Record })}
 							<a
 								href={item.url}
 								{...props}

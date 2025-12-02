@@ -116,9 +116,9 @@
 											target="_blank"
 											class="text-primary hover:text-primary/80 underline"
 											>public/private key pair</a
-										> was generated and stored safely in your browser. This key pair will be used to
-										automatically identify you here, and is much more secure than a password. Just enter
-										a username and click the button to create an account.
+										> was generated and stored safely in your browser. This key pair will be used to automatically
+										identify you here, and is much more secure than a password. Just enter a username
+										and click the button to create an account.
 									</Accordion.Content>
 								</Accordion.Item>
 								<Accordion.Item value="item-2" class="border-none">

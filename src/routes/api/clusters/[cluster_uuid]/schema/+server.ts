@@ -32,7 +32,8 @@ export const GET: RequestHandler = async ({
 			return json({ error: 'Cluster not found', success: false }, { status: 404 });
 		}
 
-		const sourceIndex = await getSourceIndexByUrl(db, cluster.indexUrl);
+		const indexOrigin = new URL(cluster.indexUrl).origin;
+		const sourceIndex = await getSourceIndexByUrl(db, indexOrigin);
 
 		if (!sourceIndex) {
 			return json({ error: 'Source index not found', success: false }, { status: 404 });
@@ -92,7 +93,7 @@ async function fetchSchema(
 	baseUrl: string,
 	fetchFn: typeof fetch
 ): Promise<JSONSchema7 | null> {
-	const schemaUrl = `${baseUrl}/schemas/${schemaName}`;
+	const schemaUrl = `${baseUrl}/v2/schemas/${schemaName}`;
 	try {
 		const response = await fetchFn(schemaUrl, {
 			headers: { 'Content-Type': 'application/json' }
