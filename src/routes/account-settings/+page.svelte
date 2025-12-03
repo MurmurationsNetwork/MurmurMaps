@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { addEmail, deleteEmail, getEmails } from '$lib/api/emails';
 	import { deletePublicKey, getPublicKeys } from '$lib/api/keys';
 	import { createToken, deleteToken, getTokens } from '$lib/api/tokens';
 	import { resetEmail, updateSiteHints } from '$lib/api/users';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
+	import { AlertTitle } from '$lib/components/ui/alert';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import {
@@ -21,18 +21,10 @@
 	import type { PageLoginToken } from '$lib/types/token';
 	import type { User } from '$lib/types/user';
 	import { isValidEmail } from '$lib/utils/validators';
-	import type { Page } from '@sveltejs/kit';
+	import { CircleAlert } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
-
-	interface CustomPageState extends Page {
-		state: {
-			message?: string;
-		};
-	}
-
-	let typedPage = page as unknown as CustomPageState;
 
 	type KnownErrors = 'UNSUPPORTED_ALGORITHM' | 'UNKNOWN';
 
@@ -46,6 +38,8 @@
 		}
 		return { type: 'UNKNOWN', message: String(error) };
 	}
+
+	let flashMessage: string | null = $state(null);
 
 	let email = $state('');
 	let validEmail = $derived(isValidEmail(email));
@@ -286,6 +280,11 @@
 		}
 	});
 
+	onMount(() => {
+		flashMessage = sessionStorage.getItem('flashMessage');
+		sessionStorage.removeItem('flashMessage');
+	});
+
 	function startTokenCountdown() {
 		setInterval(() => {
 			tokens = tokens.map((token) => {
@@ -299,11 +298,12 @@
 </script>
 
 <div class="container mx-auto p-4">
-	{#if typedPage?.state?.message}
-		<Alert
-			class="border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-200"
-		>
-			<AlertDescription>{typedPage.state.message}</AlertDescription>
+	{#if flashMessage}
+		<Alert class="mb-6">
+			<CircleAlert class="size-4" />
+			<AlertTitle>
+				{flashMessage}
+			</AlertTitle>
 		</Alert>
 	{/if}
 

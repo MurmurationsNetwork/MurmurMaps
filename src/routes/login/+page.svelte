@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { linkPublicKey } from '$lib/api/keys';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Button } from '$lib/components/ui/button';
@@ -51,10 +50,11 @@
 			const { success, error } = await linkPublicKey(token, publicKey);
 
 			if (success) {
-				goto('/admin', {
-					state: { message: 'You are now signed in to your account from this device.' },
-					replaceState: true
-				});
+				sessionStorage.setItem(
+					'flashMessage',
+					'You are now signed in to your account from this device.'
+				);
+				window.location.href = '/account-settings';
 			} else {
 				errorMessage = error || 'An error occurred';
 			}
