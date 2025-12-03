@@ -12,7 +12,7 @@
 	} from '$lib/components/ui/card';
 	import { getKey, removeDidPrefix } from '$lib/crypto';
 	import { toDidableKey } from '$lib/utils/ucan-utils';
-	import { CircleAlert, Home } from '@lucide/svelte';
+	import { CircleAlert, House } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';
 
@@ -81,7 +81,7 @@
 				</Alert>
 			{/if}
 			<Button href="/" class="w-full">
-				<Home class="mr-2 h-4 w-4" />
+				<House class="mr-2 h-4 w-4" />
 				Go to Home
 			</Button>
 		</CardContent>
