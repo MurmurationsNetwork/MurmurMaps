@@ -8,7 +8,7 @@
 		CardHeader,
 		CardTitle
 	} from '$lib/components/ui/card';
-	import { AlertTriangle, ArrowLeft, Home } from '@lucide/svelte';
+	import { ArrowLeft, House, TriangleAlert } from '@lucide/svelte';
 
 	function goHome() {
 		goto('/');
@@ -29,7 +29,7 @@
 			<div
 				class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/20"
 			>
-				<AlertTriangle class="h-8 w-8 text-red-600 dark:text-red-400" />
+				<TriangleAlert class="h-8 w-8 text-red-600 dark:text-red-400" />
 			</div>
 			<CardTitle class="text-2xl font-bold text-slate-900 dark:text-slate-50">
 				Access Denied
@@ -49,7 +49,7 @@
 					Go Back
 				</Button>
 				<Button onclick={goHome} class="flex-1">
-					<Home class="mr-2 h-4 w-4" />
+					<House class="mr-2 h-4 w-4" />
 					Home
 				</Button>
 			</div>

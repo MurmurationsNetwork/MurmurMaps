@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { linkPublicKey } from '$lib/api/keys';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Button } from '$lib/components/ui/button';
@@ -12,7 +11,7 @@
 	} from '$lib/components/ui/card';
 	import { getKey, removeDidPrefix } from '$lib/crypto';
 	import { toDidableKey } from '$lib/utils/ucan-utils';
-	import { CircleAlert, Home } from '@lucide/svelte';
+	import { CircleAlert, House } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';
 
@@ -51,10 +50,11 @@
 			const { success, error } = await linkPublicKey(token, publicKey);
 
 			if (success) {
-				goto('/admin', {
-					state: { message: 'You are now signed in to your account from this device.' },
-					replaceState: true
-				});
+				sessionStorage.setItem(
+					'flashMessage',
+					'You are now signed in to your account from this device.'
+				);
+				window.location.href = '/account-settings';
 			} else {
 				errorMessage = error || 'An error occurred';
 			}
@@ -81,7 +81,7 @@
 				</Alert>
 			{/if}
 			<Button href="/" class="w-full">
-				<Home class="mr-2 h-4 w-4" />
+				<House class="mr-2 h-4 w-4" />
 				Go to Home
 			</Button>
 		</CardContent>

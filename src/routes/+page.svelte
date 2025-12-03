@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import { getClusters } from '$lib/api/clusters';
 	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
@@ -8,21 +7,11 @@
 	import { userStore } from '$lib/stores/user-store';
 	import type { Cluster } from '$lib/types/cluster';
 	import { formatDate } from '$lib/utils/date';
-	import { CircleAlert } from '@lucide/svelte';
-	import type { Page } from '@sveltejs/kit';
 
 	let currentToken: string | null = $state(null);
 	let enableSiteHints: boolean = $state(true);
 	let clusters: Cluster[] = $state([]);
 	let isLoading: boolean = $state(false);
-
-	interface CustomPageState extends Page {
-		state: {
-			message?: string;
-		};
-	}
-
-	let typedPage = page as unknown as CustomPageState;
 
 	currentTokenStore.subscribe((value) => {
 		currentToken = value;
@@ -58,15 +47,6 @@
 		}
 	});
 </script>
-
-{#if typedPage?.state?.message}
-	<Alert class="mb-6">
-		<CircleAlert class="size-4" />
-		<AlertTitle>
-			{typedPage.state.message}
-		</AlertTitle>
-	</Alert>
-{/if}
 
 <div class="container mx-auto p-4">
 	<div class="mb-6">
