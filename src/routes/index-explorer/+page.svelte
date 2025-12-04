@@ -3,6 +3,8 @@
 	import { getCountries } from '$lib/api/countries';
 	import { getIndexNodes } from '$lib/api/index-node';
 	import { getSchemas } from '$lib/api/schemas';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
@@ -10,6 +12,7 @@
 	import * as Select from '$lib/components/ui/select/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { sourceIndexStore } from '$lib/stores/source-index';
+	import { userStore } from '$lib/stores/user-store';
 	import type { IndexNode, IndexNodeMeta } from '$lib/types/index-node';
 	import type { IndexSearchParams } from '$lib/types/index-search-params';
 	import { formatDate } from '$lib/utils/date';
@@ -24,6 +27,11 @@
 	import SortableColumn from './SortableColumn.svelte';
 
 	let { data }: { data: PageData } = $props();
+
+	let enableSiteHints: boolean = $state(true);
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	let sortedNodes: IndexNode[] = $state([]);
 	let meta: IndexNodeMeta = $state({
@@ -329,6 +337,56 @@
 </script>
 
 <div class="container mx-auto p-4">
+	{#if enableSiteHints}
+		<div class="mb-4">
+			<Alert
+				class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+			>
+				<AlertDescription class="mt-4">
+					<Accordion.Root type="single">
+						<Accordion.Item value="item-1" class="border-none">
+							<Accordion.Trigger>What is the Index Explorer?</Accordion.Trigger>
+							<Accordion.Content>
+								<p>
+									The Index Explorer allows to search the Murmurations index for data already
+									indexed by other mappers and data commons builders.
+								</p>
+
+								<div class="mm-list">
+									<p>To explore the Murmurations index:</p>
+									<ul>
+										<li>Select which index you want using the drop down at the top right</li>
+										<li>
+											Select a schema to search against - most of the data in the index has been
+											registered with the organizations_schema-v1.0.0
+										</li>
+										<li>Click Search</li>
+										<li>
+											Use the rest of the fields to filter your search for just the data you need
+										</li>
+										<li>
+											NB the default search includes all data, including profiles which have
+											recently been deleted from the Index. Change the status filter to Posted for
+											only live data.
+										</li>
+									</ul>
+								</div>
+								<p>
+									You can also search the index via <a
+										href="https://docs.murmurations.network/developers/index-api.html"
+										target="_blank"
+										rel="noreferrer"
+										class="text-primary-500 underline">the API</a
+									>
+								</p>
+							</Accordion.Content>
+						</Accordion.Item>
+					</Accordion.Root>
+				</AlertDescription>
+			</Alert>
+		</div>
+	{/if}
+
 	<div class="mb-4 sm:flex sm:items-center">
 		<div class="text-gray-900 sm:flex-auto dark:text-gray-50">
 			<p>
