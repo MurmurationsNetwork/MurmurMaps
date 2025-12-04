@@ -4,7 +4,7 @@
 
 > Note: The term "cluster" comes from machine learning, where "graph clustering" is about partitioning nodes in a graph into cohesive groups (clusters) based on their common characteristics.
 
-Create a new cluster to get started from the Admin Dashboard by clicking **Create Cluster**. It takes time to build a cluster because once the list of nodes has been retrieved from a Murmurations index, the Murmurations Maps app must fetch the profiles from every node in the list; this process can take some time if the list is long. Select two or more tags (e.g., "network" and "software") and check the **All Tags** checkbox to reduce the total size of the node list.
+Create a new cluster to get started from the Admin Dashboard by clicking **Create Cluster**. It takes time to build a cluster because once the list of nodes has been retrieved from a Murmurations index, the MurmurMap app must fetch the profiles from every node in the list; this process can take some time if the list is long. Select two or more tags (e.g., "network" and "software") and check the **All Tags** checkbox to reduce the total size of the node list.
 
 ## 1. Basic Tests
 
@@ -41,7 +41,7 @@ A profile has "authority" if it is hosted at the website it is claiming to be ab
 
 <https://docs.murmurations.network/faqs/schema.html#what-is-a-primary-url>
 
-A node's authority must prioritized by the Murmurations Maps when its profile claiming the primary URL is hosted at that primary URL.
+A node's authority must prioritized by the MurmurMaps when its profile claiming the primary URL is hosted at that primary URL.
 
 ### 2.1 From Authoritative to Unauthoritative Profile (AP -> UAP)
 
