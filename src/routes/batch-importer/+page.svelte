@@ -349,8 +349,7 @@
 								</p>
 							{:else if !user}
 								<p class="font-medium text-foreground">
-									Login first if you want to save your batch here, or just create a batch by
-									selecting a schema from the list.
+									Login first to register a batch of profiles with the index.
 								</p>
 								<p class="font-medium text-foreground pt-4">
 									<a
