@@ -4,13 +4,15 @@
 		Boxes,
 		CircleUserRound,
 		DatabaseIcon,
+		FileTextIcon,
 		KeyIcon,
+		RefreshCwIcon,
 		SearchIcon,
 		SettingsIcon,
 		ShieldIcon,
+		UploadIcon,
 		UserPlusIcon,
-		UsersIcon,
-		WrenchIcon
+		UsersIcon
 	} from '@lucide/svelte';
 
 	const data = {
@@ -26,23 +28,19 @@
 				icon: SearchIcon
 			},
 			{
-				title: 'Tools',
-				url: '#',
-				icon: WrenchIcon,
-				items: [
-					{
-						title: 'Profile Generator',
-						url: '/profile-generator'
-					},
-					{
-						title: 'Batch Importer',
-						url: '/batch-importer'
-					},
-					{
-						title: 'Index Updater',
-						url: '/index-updater'
-					}
-				]
+				title: 'Profile Generator',
+				url: '/profile-generator',
+				icon: FileTextIcon
+			},
+			{
+				title: 'Batch Importer',
+				url: '/batch-importer',
+				icon: UploadIcon
+			},
+			{
+				title: 'Index Updater',
+				url: '/index-updater',
+				icon: RefreshCwIcon
 			},
 			{
 				title: 'My Account',
