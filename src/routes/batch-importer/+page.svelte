@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createBatch, deleteBatch, getBatches, updateBatch } from '$lib/api/batches';
 	import { getSchemas } from '$lib/api/schemas';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
 	import { Badge } from '$lib/components/ui/badge';
@@ -13,6 +14,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import { dbStatus } from '$lib/stores/db-status';
 	import { sourceIndexStore } from '$lib/stores/source-index';
+	import { userStore } from '$lib/stores/user-store';
 	import type { Batch } from '$lib/types/batch';
 	import type { ValidationError } from '$lib/types/profile';
 	import { Database, Hash, SquarePen, Trash2 } from '@lucide/svelte';
@@ -24,6 +26,11 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	let enableSiteHints: boolean = $state(true);
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	const user = data?.user ?? null;
 
@@ -336,6 +343,42 @@
 </script>
 
 <div class="container mx-auto p-4">
+	{#if enableSiteHints}
+		<div class="mb-4">
+			<Alert
+				class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+			>
+				<AlertDescription class="mt-4">
+					<Accordion.Root type="single">
+						<Accordion.Item value="item-1" class="border-none">
+							<Accordion.Trigger>What is the Batch Importer?</Accordion.Trigger>
+							<Accordion.Content>
+								<div class="mm-list">
+									<p>Use the Batch Importer to Import large datasets to Murmurations.</p>
+									<p>
+										Data can be uploaded in csv format but must match the required format for your
+										chosen schema - see <a
+											href="https://docs.murmurations.network/guides/import-networks.html#spreadsheet-import"
+											target="_blank"
+											class="text-primary hover:text-primary/80 underline"
+											>more details in the Docs</a
+										>. Once you have prepared your data in the right format:
+									</p>
+									<ul>
+										<li>Select which index you want using the drop down at the top right</li>
+										<li>Select one or more schemas</li>
+										<li>Give your batch a title (just for your own reference)</li>
+										<li>Select your csv file</li>
+										<li>Click Import</li>
+									</ul>
+								</div>
+							</Accordion.Content>
+						</Accordion.Item>
+					</Accordion.Root>
+				</AlertDescription>
+			</Alert>
+		</div>
+	{/if}
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 		<!-- BEGIN: List of batches -->
 		<div class="md:col-span-1 space-y-4 overflow-auto">
@@ -349,8 +392,7 @@
 								</p>
 							{:else if !user}
 								<p class="font-medium text-foreground">
-									Login first if you want to save your batch here, or just create a batch by
-									selecting a schema from the list.
+									Login first to register a batch of profiles with the index.
 								</p>
 								<p class="font-medium text-foreground pt-4">
 									<a

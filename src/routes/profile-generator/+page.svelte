@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { getProfile, getProfiles } from '$lib/api/profiles';
 	import { getSchemas } from '$lib/api/schemas';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Card, CardContent } from '$lib/components/ui/card';
 	import { dbStatus } from '$lib/stores/db-status';
 	import { sourceIndexStore } from '$lib/stores/source-index';
+	import { userStore } from '$lib/stores/user-store';
 	import type { Profile, ProfileCardType, ProfileObject } from '$lib/types/profile';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 
@@ -16,6 +19,11 @@
 	import SchemaSelector from './SchemaSelector.svelte';
 
 	let { data }: { data: PageData } = $props();
+
+	let enableSiteHints: boolean = $state(true);
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	const queryClient = new QueryClient();
 
@@ -165,6 +173,55 @@
 
 <QueryClientProvider client={queryClient}>
 	<div class="container mx-auto p-4">
+		{#if enableSiteHints}
+			<div class="mb-4">
+				<Alert
+					class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+				>
+					<AlertDescription class="mt-4">
+						<Accordion.Root type="single">
+							<Accordion.Item value="item-1" class="border-none">
+								<Accordion.Trigger>What is the Profile Generator?</Accordion.Trigger>
+								<Accordion.Content>
+									<div class="mm-list">
+										<p>
+											Use the Profile Generator to create new profiles and register them with the
+											index. If you want to host your profile with MurmurMaps you need to log in
+											first. If you will host your profiles at your own URL you don’t need to log
+											in.
+										</p>
+										<ul>
+											<li>Select which index you want using the drop down at the top right</li>
+											<li>
+												Select one or more schemas to create a new profile (use cmd and click to
+												select multiple schemas)
+											</li>
+											<li>Fill in the form fields as required</li>
+											<li>
+												Click Validate and your JSON profile will be created - you now have 2
+												options:
+												<ol>
+													<li>
+														To host your profile with MurmurMaps, give your profile a Title (just
+														for your own reference) and click Save & Post
+													</li>
+													<li>
+														To host your profile at your own URL copy the JSON code, paste it into a
+														text file and save it (e.g. your-profile.json) then upload it to the
+														internet and use the Index Updater to add it to the index by entering
+														the full URL in the Add/Update field and clicking Post.
+													</li>
+												</ol>
+											</li>
+										</ul>
+									</div>
+								</Accordion.Content>
+							</Accordion.Item>
+						</Accordion.Root>
+					</AlertDescription>
+				</Alert>
+			</div>
+		{/if}
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 			<!-- BEGIN: List of user-generated profiles -->
 			<div class="md:col-span-1 space-y-4 overflow-auto">

@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { deleteIndex, getIndexStatus, postIndex } from '$lib/api/profiles';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { sourceIndexStore } from '$lib/stores/source-index';
+	import { userStore } from '$lib/stores/user-store';
 	import { CircleAlert, CircleCheck } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';
@@ -12,6 +14,11 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	let enableSiteHints: boolean = $state(true);
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	let postProfileUrl = $state('');
 	let checkProfileUrl = $state('');
@@ -147,6 +154,26 @@
 </script>
 
 <div class="container mx-auto p-4">
+	{#if enableSiteHints}
+		<div class="mb-4">
+			<Alert.Root
+				class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+			>
+				<Alert.Description class="mt-4">
+					<Accordion.Root type="single">
+						<Accordion.Item value="item-1" class="border-none">
+							<Accordion.Trigger>What is the Index Updater?</Accordion.Trigger>
+							<Accordion.Content>
+								You can host Murmurations profiles anywhere on the web - all they need is an
+								accessible URL. If you’re hosting your own profiles use the Index Updater below to
+								add, remove or update a node in the index.
+							</Accordion.Content>
+						</Accordion.Item>
+					</Accordion.Root>
+				</Alert.Description>
+			</Alert.Root>
+		</div>
+	{/if}
 	<div class="mb-4 sm:flex sm:items-center">
 		<div class="text-gray-900 sm:flex-auto dark:text-gray-50">
 			<h1 class="text-2xl font-bold mb-2">Index Updater</h1>

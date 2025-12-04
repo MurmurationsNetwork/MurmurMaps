@@ -1,8 +1,8 @@
-# Murmurations Maps
+# MurmurMaps
 
 ## Local Setup Guide
 
-This guide will help you set up and run the Murmurations Maps locally. Follow the steps in order to ensure a smooth installation.
+This guide will help you set up and run MurmurMaps. Follow the steps in order to ensure a smooth installation.
 
 ## 1. Configure Environment Variables
 
@@ -54,7 +54,7 @@ PRIVATE_SERVER_KEY=SClA0WPgndVIBcYMy9KNc2SVcsEFJEjGQdyxTNHTc+75ciH16VlgrKUcw/x8t
 
 ## 3. Set Up the Database
 
-Murmurations Maps uses **Cloudflare D1** as its database.
+MurmurMaps uses **Cloudflare D1** as its database.
 
 Run the migration command to initialize the local database:
 

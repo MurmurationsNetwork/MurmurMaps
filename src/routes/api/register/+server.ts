@@ -66,7 +66,11 @@ export const POST: RequestHandler = async ({
 
 		if (userIdByPublicKey) {
 			return json(
-				{ error: 'Public key already exists, please reset your key pairs', success: false },
+				{
+					error:
+						'A Public Key already exists for this browser, if you visit the home page you should be automatically logged in. If not, delete the Public Key for this browser and create a new one.',
+					success: false
+				},
 				{ status: 403 }
 			);
 		}
