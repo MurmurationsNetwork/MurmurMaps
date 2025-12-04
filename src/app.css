@@ -131,3 +131,8 @@
 	margin-left: 1.25rem;
 	list-style-type: circle;
 }
+
+.mm-list ol {
+	margin-left: 1.25rem;
+	list-style-type: decimal;
+}
