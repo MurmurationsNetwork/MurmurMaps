@@ -70,28 +70,120 @@
 						<Accordion.Item value="item-1" class="border-none">
 							<Accordion.Trigger>What is MurmurMaps?</Accordion.Trigger>
 							<Accordion.Content>
-								With MurmurMaps you can:
+								<p>MurmurMaps provides a range of collaborative mapping tools.</p>
+								<p>
+									Based on the Murmurations protocol, the MurmurMaps tools provide a way to create,
+									import and register ‘profiles’ and to create multiple maps and directories from
+									the same shared, distributed, open source data set.
+								</p>
+								<p>
+									Murmurations solves the problems that plague most maps, which are created from a
+									centralised database and managed by a single organisation or person, by:
+								</p>
 								<ul class="list-disc list-inside">
-									<li class="mt-2">
-										Create maps and directories by curating clusters of open, decentralized data
-										from the Murmurations index
-									</li>
-									<li>
-										Create and manage your own open data sets for inclusion in the Murmurations
-										index
-									</li>
-									<li>Explore the data in the Murmurations index</li>
+									<li class="mt-2">Distributing the effort of data collection</li>
+									<li>Making data interoperable so it can power multiple maps and directories</li>
+									<li>Providing a ‘last updated’ timestamp to show the age of every profile</li>
+									<li>Distributing the effort of keeping data up to date</li>
+									<li>Enabling Profile changes to be reflected on multiple maps and directories</li>
+									<li>Improving data quality, reliability and usability</li>
 								</ul>
+								<p>
+									Find out more on <a
+										href="https://murmurations.network"
+										target="_blank"
+										class="text-primary hover:text-primary/80 underline">our website</a
+									>
+									and in the
+									<a
+										href="https://docs.murmurations.network"
+										target="_blank"
+										class="text-primary hover:text-primary/80 underline">Docs</a
+									>.
+								</p>
+								<p>
+									This app, and the entire Murmurations protocol, is open source. You can find the
+									source code for this app on <a
+										href="https://github.com/MurmurationsNetwork/MurmurMaps"
+										target="_blank"
+										class="text-primary hover:text-primary/80 underline">GitHub</a
+									>. Download the code and deploy it to a cloud provider (we use Cloudflare).
+								</p>
 							</Accordion.Content>
 						</Accordion.Item>
 						<Accordion.Item value="item-2" class="border-none">
-							<Accordion.Trigger>How do I create my own maps and directories?</Accordion.Trigger>
-							<Accordion.Content>
-								MurmurMaps is open source software. You can find the source code on <a
-									href="https://github.com/MurmurationsNetwork/MurmurMaps"
-									target="_blank"
-									class="text-primary hover:text-primary/80 underline">GitHub</a
-								>. Download the code and deploy it to a cloud provider (we use Cloudflare).
+							<Accordion.Trigger>What can you do with MurmurMaps?</Accordion.Trigger>
+							<Accordion.Content class="mm-list">
+								<ul>
+									<li>
+										Explore the data registered with the Murmurations index
+										<ul>
+											<li>
+												The Murmurations index keeps a record of where all the data profiles are
+												stored. Use the Index Explorer to search for pre-existing data to avoid
+												having to start a map from scratch.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Curate clusters of data from the Murmurations index
+										<ul>
+											<li>
+												We use the term ‘clusters’ to refer to the maps and directories which are
+												created from multiple profiles that are registered with the index. Explore
+												some of the demonstration clusters below. If you would like to create and
+												curate clusters using this instance of MurmurMaps please <a
+													href="https://murmurations.network/contact"
+													target="_blank"
+													class="text-primary hover:text-primary/80 underline">contact us</a
+												> for additional permissions.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Create maps to display on other websites
+										<ul>
+											<li>
+												Every cluster has an embed link at the top right of the page which you can
+												use to embed maps that are created with MurmurMaps on any other website.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Create profiles to include on your maps or directories
+										<ul>
+											<li>
+												Use the Profile Generator to add new data to the Murmurations index to
+												display on your maps. Use descriptive tags when creating profiles to help
+												other people find the data so it will be automatically added next time you
+												update the nodes in your cluster. You can use the Profile Generator to
+												create new profiles and host them yourself at your own domain, or log in to
+												host them with MurmurMaps.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Update and remove nodes from the Murmurations Index
+										<ul>
+											<li>
+												You can host Murmurations profiles anywhere on the web - all they need is an
+												accessible URL. If you’re hosting your own profiles you can use the Index
+												Updater to add, remove or update a node in the index.
+											</li>
+										</ul>
+									</li>
+									<li>
+										Import large datasets to use on your maps or directories
+										<ul>
+											<li>
+												Imagine if everyone with a spreadsheet, or database shared their public data
+												with the commons - mapping would be so much easier! The batch importer makes
+												it easy to upload large data sets and register them with the index, so you
+												can use the data on your maps and others can benefit from it too.
+											</li>
+										</ul>
+									</li>
+								</ul>
 							</Accordion.Content>
 						</Accordion.Item>
 						{#if !currentToken}
