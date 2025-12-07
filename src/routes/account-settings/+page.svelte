@@ -533,8 +533,8 @@
 						</div>
 						<p class="text-sm text-muted-foreground">
 							Use this link to test resetting your email:
-							<a class="text-primary hover:underline" href="{window.location.origin}/admin/email">
-								{window.location.origin}/admin/email
+							<a class="text-primary hover:underline" href="{window.location.origin}/email">
+								{window.location.origin}/email
 							</a>
 						</p>
 					</div>
