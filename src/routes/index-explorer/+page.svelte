@@ -53,7 +53,7 @@
 		locality: '',
 		region: '',
 		country: '',
-		status: '',
+		status: 'posted',
 		tags_filter: 'or',
 		tags_exact: 'false',
 		page_size: '30',
@@ -84,9 +84,8 @@
 	]);
 
 	const statusOptions = $derived([
-		{ value: '', label: 'Select a Status (default: all)' },
-		{ value: 'posted', label: 'posted' },
-		{ value: 'deleted', label: 'deleted' }
+		{ value: 'posted', label: 'Posted' },
+		{ value: 'deleted', label: 'Deleted' }
 	]);
 
 	const pageSizeOptions = $derived([
@@ -104,8 +103,7 @@
 	);
 
 	const statusTriggerContent = $derived(
-		statusOptions.find((s) => s.value === searchParamsObj.status)?.label ??
-			'Select a Status (default: all)'
+		statusOptions.find((s) => s.value === searchParamsObj.status)?.label ?? 'Posted'
 	);
 
 	const pageSizeTriggerContent = $derived(
@@ -167,10 +165,19 @@
 		}
 	}
 
+	let previousSourceIndexId: number | null = null;
+
 	// When the source index changes, load the initial data
 	$effect(() => {
 		const id = $sourceIndexStore;
 		if (!id) return;
+
+		if (previousSourceIndexId === null) {
+			previousSourceIndexId = id;
+			return;
+		}
+
+		if (previousSourceIndexId === id) return;
 
 		queueMicrotask(async () => {
 			await loadInitialData();

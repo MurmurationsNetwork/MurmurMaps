@@ -90,7 +90,6 @@ VALUES
 
   ('page', '/', 'admin', 'GET'),
   ('page', '/clusters', 'admin', 'GET'),
-  ('page', '/emails', 'admin', 'GET'),
   ('page', '/source-indexes', 'admin', 'GET'),  
   ('page', '/users', 'admin', 'GET'),
   ('page', '/roles', 'admin', 'GET'),

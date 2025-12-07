@@ -37,42 +37,44 @@
 	};
 </script>
 
-<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Email Reset</h1>
+<div class="container mx-auto p-4">
+	<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Email Reset</h1>
 
-{#if successMessage}
-	<Alert variant="default" class="mb-4">
-		<CircleCheck class="size-4" />
-		<AlertTitle>Success</AlertTitle>
-		<AlertDescription>{successMessage}</AlertDescription>
-	</Alert>
-{/if}
-{#if errorMessage}
-	<Alert variant="destructive" class="mb-4">
-		<CircleAlert class="size-4" />
-		<AlertTitle>Error</AlertTitle>
-		<AlertDescription>{errorMessage}</AlertDescription>
-	</Alert>
-{/if}
+	{#if successMessage}
+		<Alert variant="default" class="mb-4">
+			<CircleCheck class="size-4" />
+			<AlertTitle>Success</AlertTitle>
+			<AlertDescription>{successMessage}</AlertDescription>
+		</Alert>
+	{/if}
+	{#if errorMessage}
+		<Alert variant="destructive" class="mb-4">
+			<CircleAlert class="size-4" />
+			<AlertTitle>Error</AlertTitle>
+			<AlertDescription>{errorMessage}</AlertDescription>
+		</Alert>
+	{/if}
 
-<form onsubmit={handleSubmit} class="space-y-4">
-	<div class="space-y-2">
-		<label for="email" class="block text-sm font-medium">Email</label>
-		<Input
-			id="email"
-			type="email"
-			bind:value={email}
-			placeholder="Enter your email"
-			autocomplete="email"
-		/>
-		{#if email && !validEmail}
-			<p class="text-sm text-destructive">Invalid email format</p>
-		{/if}
-	</div>
-	<Button type="submit" disabled={!validEmail || isLoading} class="w-full">
-		{#if isLoading}
-			Loading...
-		{:else}
-			Submit Email
-		{/if}
-	</Button>
-</form>
+	<form onsubmit={handleSubmit} class="space-y-4">
+		<div class="space-y-2">
+			<label for="email" class="block text-sm font-medium">Email</label>
+			<Input
+				id="email"
+				type="email"
+				bind:value={email}
+				placeholder="Enter your email"
+				autocomplete="email"
+			/>
+			{#if email && !validEmail}
+				<p class="text-sm text-destructive">Invalid email format</p>
+			{/if}
+		</div>
+		<Button type="submit" disabled={!validEmail || isLoading} class="w-full">
+			{#if isLoading}
+				Loading...
+			{:else}
+				Submit Email
+			{/if}
+		</Button>
+	</form>
+</div>

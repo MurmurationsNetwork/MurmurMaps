@@ -119,7 +119,7 @@
 		'/index-explorer',
 		'/index-updater',
 		'/no-access',
-		'/admin/no-access'
+		'/email'
 	];
 
 	const hasSourceIndexRoute = [
