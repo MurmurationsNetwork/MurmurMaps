@@ -55,7 +55,7 @@
 		"pako": "^2.1.0",
 		"prettier": "^3.7.1",
 		"prettier-plugin-svelte": "^3.4.0",
-		"prettier-plugin-tailwindcss": "^0.7.1",
+		"prettier-plugin-tailwindcss": "^0.7.2",
 		"svelte": "^5.45.2",
 		"svelte-check": "^4.3.4",
 		"svelte-sonner": "^1.0.6",
