@@ -48,7 +48,6 @@ VALUES
   ('api', '/emails', 'emails', 'GET'),
   ('api', '/emails', 'emails', 'POST'),
   ('api', '/emails', 'emails', 'DELETE'),
-  ('api', '/emails/send-reset-request', 'emails', 'POST'),
 
   ('api', '/keys', 'keys', 'GET'),
   ('api', '/keys', 'keys', 'DELETE'),
