@@ -4,7 +4,6 @@ import { getUserIdByEmail } from '$lib/server/models/email';
 import { insertLoginToken } from '$lib/server/models/login-token';
 import { getByUserId } from '$lib/server/models/user';
 import { generateLoginToken } from '$lib/server/utils';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
 import type { D1Database } from '@cloudflare/workers-types';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
@@ -22,21 +21,6 @@ export const POST: RequestHandler = async ({
 }) => {
 	try {
 		const db = getDB(platform.env);
-
-		const {
-			publicKey,
-			error: ucanError,
-			status
-		} = await authenticateUcanRequest(db, request, {
-			scheme: 'api',
-			hierPart: '/emails/send-reset-request',
-			namespace: 'emails',
-			segments: ['POST']
-		});
-
-		if (!publicKey) {
-			return json({ error: ucanError, success: false }, { status });
-		}
 
 		const { email } = await request.json();
 
