@@ -48,7 +48,7 @@ export const POST: RequestHandler = async ({
 		const resetLink = new URL(`/login?token=${token}`, request.url).toString();
 
 		const { error } = await resend.emails.send({
-			from: 'DONOTREPLY <onboarding@ic3.dev>',
+			from: 'DONOTREPLY <murmurmaps@murmurations.network>',
 			to: [email],
 			subject: 'Account Access Reset',
 			html: `<strong>Click the link to reset your account access: <a href="${resetLink}">${resetLink}</a></strong>`
