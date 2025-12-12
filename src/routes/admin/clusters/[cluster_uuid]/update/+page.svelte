@@ -146,6 +146,7 @@
 			const { data, success, error } = await updateNodes(clusterUuid);
 			if (!success) {
 				toast.error(error ?? 'Failed to update nodes');
+				goto('/admin');
 				return;
 			}
 
@@ -171,7 +172,6 @@
 
 	function startUpdatePolling() {
 		if (updateInterval) clearInterval(updateInterval);
-		isLoading = true;
 
 		updateInterval = setInterval(async () => {
 			try {
