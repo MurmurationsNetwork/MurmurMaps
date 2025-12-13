@@ -100,7 +100,7 @@ export const POST: RequestHandler = async ({
 			return json(
 				{
 					error:
-						'Too many nodes after update. Please delete this cluster and create a new one with narrower search parameters.',
+						'Too many nodes after update (over 500). Please delete this cluster and create a new one with narrower search parameters.',
 					success: false
 				},
 				{ status: 400 }
