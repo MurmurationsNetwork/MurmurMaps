@@ -172,6 +172,7 @@
 
 	function startUpdatePolling() {
 		if (updateInterval) clearInterval(updateInterval);
+		isLoading = true;
 
 		updateInterval = setInterval(async () => {
 			try {
@@ -247,12 +248,19 @@
 	onMount(() => {
 		const url = new URL(window.location.href);
 		jobUuid = url.searchParams.get('jobUuid');
+		const shouldRun = url.searchParams.get('run') === '1';
 
-		if (jobUuid) {
-			startUpdatePolling();
-		} else {
-			handleUpdate();
+		if (!shouldRun) {
+			if (jobUuid) {
+				startUpdatePolling();
+			}
+			return;
 		}
+
+		url.searchParams.delete('run');
+		replaceState(url.pathname + url.search, '');
+
+		handleUpdate();
 	});
 
 	onDestroy(() => {
