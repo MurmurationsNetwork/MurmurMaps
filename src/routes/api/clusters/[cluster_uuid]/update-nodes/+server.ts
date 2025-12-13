@@ -9,6 +9,7 @@ import {
 } from '$lib/server/models/node';
 import type { ClusterWithJobUuid } from '$lib/types/cluster';
 import type { JobCreateInput } from '$lib/types/job';
+import { fetchProfiles } from '$lib/utils/profile';
 import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
 import type { D1Database } from '@cloudflare/workers-types';
 import { json } from '@sveltejs/kit';
@@ -91,6 +92,19 @@ export const POST: RequestHandler = async ({
 		const cluster = await getCluster(db, clusterUuid);
 		if (!cluster) {
 			return json({ error: 'Cluster not found', success: false }, { status: 404 });
+		}
+
+		// Check if the cluster has more than 500 nodes
+		const { meta } = await fetchProfiles(cluster.indexUrl, cluster.queryUrl);
+		if (meta?.total_pages > 1) {
+			return json(
+				{
+					error:
+						'Too many nodes after update (over 500). Please delete this cluster and create a new one with narrower search parameters.',
+					success: false
+				},
+				{ status: 400 }
+			);
 		}
 
 		const jobUuid = crypto.randomUUID();
