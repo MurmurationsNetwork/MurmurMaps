@@ -26,7 +26,7 @@
 		"@eslint/compat": "^2.0.0",
 		"@eslint/js": "^9.39.1",
 		"@internationalized/date": "^3.10.0",
-		"@lucide/svelte": "^0.553.0",
+		"@lucide/svelte": "^0.561.0",
 		"@paralleldrive/cuid2": "^3.1.0",
 		"@playwright/test": "^1.57.0",
 		"@react-email/render": "^2.0.0",
