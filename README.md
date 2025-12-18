@@ -136,3 +136,59 @@ Your application should now be available locally at: [http://localhost:5173](htt
     - `2` → `1`
 3. Delete the core IndexedDB database in your browser
 4. Refresh the page and you'll be able to see admin panel through <http://localhost:5173/admin>
+
+## Cloudflare Deployment Guide
+
+### 1. Create Cloudflare Resources
+
+- D1 database (ex: murmur-maps)
+- Queue (ex: murmur-maps-queue)
+
+### 2. Update `wrangler.jsonc` for newly created D1 database and Queue
+
+Replace `<D1_DATABASE_NAME>`, `<D1_DATABASE_ID>` and `<Queue_NAME>` with your newly created resource.
+
+```jsonc
+"d1_databases": [
+    {
+        "binding": "DB",
+        "database_name": "<D1_DATABASE_NAME>",
+        "database_id": "<D1_DATABASE_ID>",
+        "migrations_dir": "drizzle"
+    }
+],
+"queues": {
+    "producers": [
+        {
+            "queue": "<Queue_NAME>",
+            "binding": "JOB_QUEUE"
+        }
+    ]
+}
+```
+
+### 3. Deploying MurmurMaps to Cloudflare Pages
+
+1. Go to Cloudflare Dashboard
+2. Navigate to Workers & Pages
+3. Click Create application (top-right)
+4. At the bottom of the page, under "Looking to deploy Pages? Get started", click "Get started"
+5. Choose a source repository, typically GitHub and select the MurmurMaps repository
+6. During setup, open Build settings and configure:
+    - **Framework preset**: `SvelteKit`
+7. Select "Save and Deploy"
+8. After first deployment, set the following Environment Variables in the Worker Settings:
+    - NODE_VERSION(Text): `22.14.0`
+    - PUBLIC_TOOLS_URL(Text): The public URL of the deployed app.You can set this **after the first deployment**, once the Pages URL is known.
+    - PRIVATE_RESEND_KEY(Secret): Same as local setup.
+    - PUBLIC_SERVER_DID_KEY(Text): Same way to generate during local setup.
+    - PRIVATE_SERVER_KEY(Secret): Same way to generate during local setup.
+9. Bind with D1 database and Queue in the Worker Settings
+10. Setup Compatibility flags in Runtime in the Worker Settings.
+    - Compatibility flags: `nodejs_compat_v2`
+
+### 4. Deploy the MurmurMaps Consumer (Required)
+
+Deploy the Worker Consumer by following the setup instructions in the MurmurMaps Consumer repository:
+
+<https://github.com/MurmurationsNetwork/MurmurMapsConsumer>
