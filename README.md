@@ -7,13 +7,13 @@ MurmurMaps is the unified application for the Murmurations Network ecosystem.
 It provides a web-based interface for:
 
 - Cluster Management: Build clusters by querying the index and collecting matching profiles. Clusters support both **directory** and **map-based** views.
-- Index Explorer: Search, filter, and inspect profiles in the Murmurations Index.
-- Profile Generator: Generate new profiles from schema and update generated profiles.
+- Index Explorer: Search, filter and inspect profiles in the Murmurations Index.
+- Profile Generator: Generate new profiles from one or more schemas and update generated profiles.
 - Batch Importer: Import and update profiles in bulk using CSV files.
-- Index Updater: Propagate profile changes to update nodes in the Murmurations Index.
-- Administration: Manage users, roles, and capabilities using UCAN-based authorization.
+- Index Updater: Propagate profile changes to update self-hosted nodes in the Murmurations Index.
+- Administration: Manage users, roles and capabilities using UCAN-based authorization.
 
-MurmurMaps is designed to run natively on Cloudflare Pages, Workers, D1, and Queues, enabling a fully serverless, scalable architecture.
+MurmurMaps is designed to run natively on Cloudflare Pages, Workers, D1 and Queues, enabling a fully serverless, scalable architecture.
 
 To handle long-running or resource-intensive tasks, MurmurMaps integrates with a companion Worker project called [MurmurMaps Consumer](https://github.com/MurmurationsNetwork/MurmurMapsConsumer), which processes background jobs asynchronously via Cloudflare Queues.
 
@@ -22,7 +22,7 @@ To handle long-running or resource-intensive tasks, MurmurMaps integrates with a
 MurmurMaps is a single Cloudflare-based application.
 
 - **Frontend handling** (Cloudflare Pages)  
-  Handles the UI, murmurations features, authentication (UCAN), and creates jobs for long-running operations.
+  Handles the UI, Murmurations features, authentication (UCAN), and creates jobs for long-running operations.
 
 - **Background processing** (Cloudflare Workers)
   Processes long-running and bulk operations asynchronously via a Cloudflare Queue.
@@ -33,7 +33,7 @@ Both contexts:
 - Share the same Cloudflare Queue
 - Share the same data model
 
-⚠️ **The Cloudflare Workers act as Queue Consumer is required.**  
+⚠️ **Cloudflare Workers acting as Queue Consumer is required.**  
 MurmurMaps will not function correctly in production without the background worker deployed.
 
 ## Technology Stack
@@ -97,7 +97,7 @@ PUBLIC_SERVER_DID_KEY=did:key:z6MkwEzW43zy5CJ4rSscCA4N6EpFGK6WHbFQrg8NxomZoEJS
 PRIVATE_SERVER_KEY=SClA0WPgndVIBcYMy9KNc2SVcsEFJEjGQdyxTNHTc+75ciH16VlgrKUcw/x8t6btDeb5FpvQwk2g8AVqIZPbdw==
 ```
 
-Copy the above generated values into `.env`
+Copy the generated values into `.env` (don't use the example values above!)
 
 ```bash
 PUBLIC_SERVER_DID_KEY=...
@@ -106,8 +106,7 @@ PRIVATE_SERVER_KEY=...
 
 ### 4. Initialize the Local Database
 
-MurmurMaps uses Cloudflare D1.
-For local development, Wrangler creates a local SQLite-backed database.
+MurmurMaps uses Cloudflare D1. For local development, Wrangler creates a local SQLite-backed database.
 
 ```bash
 pnpm db:migrate
@@ -127,7 +126,7 @@ Start the development server:
 pnpm dev
 ```
 
-Your application should now be available locally at: [http://localhost:5173](http://localhost:5173)
+Your application should now be available locally at: <http://localhost:5173>
 
 ### 6. Enable Admin Access (Local)
 
@@ -189,6 +188,5 @@ Replace `<D1_DATABASE_NAME>`, `<D1_DATABASE_ID>` and `<Queue_NAME>` with your ne
 
 ### 4. Deploy the MurmurMaps Consumer (Required)
 
-Deploy the Worker Consumer by following the setup instructions in the MurmurMaps Consumer repository:
-
+Deploy the Worker Consumer by following the setup instructions in the MurmurMaps Consumer repository:  
 <https://github.com/MurmurationsNetwork/MurmurMapsConsumer>
