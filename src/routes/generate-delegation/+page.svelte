@@ -1,10 +1,6 @@
 <script lang="ts">
-	import {
-		Accordion,
-		AccordionContent,
-		AccordionItem,
-		AccordionTrigger
-	} from '$lib/components/ui/accordion';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Button } from '$lib/components/ui/button';
 	import {
 		Card,
@@ -19,6 +15,7 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { getToken } from '$lib/core';
 	import { getKey } from '$lib/crypto';
+	import { userStore } from '$lib/stores/user-store';
 	import { toDidableKey } from '$lib/utils/ucan-utils';
 	import * as ucans from '@ucans/ucans';
 
@@ -33,6 +30,11 @@
 	let generatedDelegation: string | null = $state(null);
 	let keypair: { publicKey: CryptoKey; privateKey: CryptoKey } | null = $state(null);
 	let myDidKey = $state('');
+	let enableSiteHints: boolean = $state(true);
+
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	let isAllSelected = $derived(
 		parsedCapabilities.length > 0 && selectedCapabilities.length === parsedCapabilities.length
@@ -211,6 +213,35 @@
 		</p>
 	</div>
 
+	{#if enableSiteHints}
+		<Alert
+			class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+		>
+			<AlertDescription class="mt-4">
+				<Accordion.Root type="single">
+					<Accordion.Item value="item-1" class="border-none">
+						<Accordion.Trigger>What are these settings?</Accordion.Trigger>
+						<Accordion.Content>
+							<p>
+								Delegation enables you to link MurmurMaps accounts. This could be useful if you want
+								to create multiple profiles and for everyone in your team to be able to see and edit
+								them. To create a delegation the other user/s must be registered on MurmurMaps and
+								send you their Public Key. Paste their key in below, select the capabilities you
+								want to delegate to the recipient, and click Generate Delegation. Then pass the
+								Delegation Token which is generated to your colleague so they can enter it in their
+								account under Receive Delegation.
+							</p>
+							<p>
+								WARNING: Do not delegate all capabilities unless you completely trust the other
+								person!
+							</p>
+						</Accordion.Content>
+					</Accordion.Item>
+				</Accordion.Root>
+			</AlertDescription>
+		</Alert>
+	{/if}
+
 	{#if generatedDelegation}
 		<Card>
 			<CardHeader>
@@ -277,11 +308,11 @@
 					</div>
 				</div>
 
-				<Accordion type="multiple" class="w-full">
+				<Accordion.Root type="multiple" class="w-full">
 					{#each parsedCapabilities as capability, index (capability.can)}
 						{@const details = getCapabilityDetails(capability)}
-						<AccordionItem value="capability-{index}">
-							<AccordionTrigger class="text-left">
+						<Accordion.Item value="capability-{index}">
+							<Accordion.Trigger class="text-left">
 								<div class="flex items-center space-x-3 flex-1">
 									<Checkbox
 										id="capability-{index}"
@@ -297,8 +328,8 @@
 										{formatCapability(capability)}
 									</Label>
 								</div>
-							</AccordionTrigger>
-							<AccordionContent>
+							</Accordion.Trigger>
+							<Accordion.Content>
 								<div class="pl-8 space-y-2">
 									<div class="text-xs text-slate-500 dark:text-slate-400">
 										<strong>Scheme:</strong>
@@ -317,10 +348,10 @@
 										{details.segments}
 									</div>
 								</div>
-							</AccordionContent>
-						</AccordionItem>
+							</Accordion.Content>
+						</Accordion.Item>
 					{/each}
-				</Accordion>
+				</Accordion.Root>
 
 				<div class="mt-4 text-sm text-slate-600 dark:text-slate-400">
 					{#if selectedCapabilities.length > 0}

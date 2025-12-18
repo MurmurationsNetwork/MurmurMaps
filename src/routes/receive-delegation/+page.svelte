@@ -1,4 +1,6 @@
 <script lang="ts">
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { Button } from '$lib/components/ui/button';
 	import {
 		Card,
@@ -21,6 +23,7 @@
 	import { getDelegations, storeDelegations } from '$lib/core';
 	import { getKey } from '$lib/crypto';
 	import { delegationsStore } from '$lib/stores/token-store';
+	import { userStore } from '$lib/stores/user-store';
 	import type { Delegation } from '$lib/types/delegation';
 	import { decodeUcanToDelegation } from '$lib/utils/ucan-utils';
 	import { toDidableKey } from '$lib/utils/ucan-utils';
@@ -33,6 +36,11 @@
 	let isProcessing = $state(false);
 	let delegations: Delegation[] = $state([]);
 	let myDidKey = $state('');
+	let enableSiteHints: boolean = $state(true);
+
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	onMount(async () => {
 		delegations = await getDelegations();
@@ -132,6 +140,27 @@
 	</div>
 
 	{#if myDidKey}
+		{#if enableSiteHints}
+			<Alert
+				class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+			>
+				<AlertDescription class="mt-4">
+					<Accordion.Root type="single">
+						<Accordion.Item value="item-1" class="border-none">
+							<Accordion.Trigger>What are these settings?</Accordion.Trigger>
+							<Accordion.Content>
+								<p>
+									Delegation enables you to link MurmurMaps accounts. If someone sends you a
+									delegation token, enter it below to masquerade as the person who sent you the
+									token.
+								</p>
+							</Accordion.Content>
+						</Accordion.Item>
+					</Accordion.Root>
+				</AlertDescription>
+			</Alert>
+		{/if}
+
 		<Card>
 			<CardHeader>
 				<CardTitle>Your DID Key</CardTitle>

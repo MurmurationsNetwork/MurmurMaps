@@ -3,6 +3,7 @@
 	import { deletePublicKey, getPublicKeys } from '$lib/api/keys';
 	import { createToken, deleteToken, getTokens } from '$lib/api/tokens';
 	import { resetEmail, updateSiteHints } from '$lib/api/users';
+	import * as Accordion from '$lib/components/ui/accordion/index.js';
 	import { Alert, AlertDescription } from '$lib/components/ui/alert';
 	import { AlertTitle } from '$lib/components/ui/alert';
 	import { Badge } from '$lib/components/ui/badge';
@@ -53,6 +54,11 @@
 	let emailResetEnabled = $state(false);
 	let isLoading = $state(true);
 	let siteHintsEnabled = $state(false);
+	let enableSiteHints: boolean = $state(true);
+
+	userStore.subscribe((value) => {
+		enableSiteHints = value?.enableSiteHints ?? true;
+	});
 
 	userStore.subscribe((user) => {
 		currentUser = user;
@@ -367,6 +373,41 @@
 			</Card>
 		{/if}
 	{:else}
+		{#if enableSiteHints}
+			<Alert
+				class="bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-950 dark:border-blue-800 dark:text-blue-200"
+			>
+				<AlertDescription class="mt-4">
+					<Accordion.Root type="single">
+						<Accordion.Item value="item-1" class="border-none">
+							<Accordion.Trigger>What are these settings?</Accordion.Trigger>
+							<Accordion.Content>
+								<ul class="list-disc list-inside">
+									<li>
+										Your first Public Key is automatically generated when you register with
+										MurmurMaps.
+									</li>
+									<li>
+										If you want to login to your account from another device you can generate a
+										Login Token and then copy the link and open it on your other device. This
+										creates a new public key which you will see listed below once you have logged in
+										from the new device.
+									</li>
+									<li>
+										You can add an email address to reset access to your account if you accidentally
+										erase all of your public keys from your devices.
+									</li>
+									<li>
+										Site hints are the helpful hints and tips to improve your experience shown in
+										the blue boxes at the top of each screen.
+									</li>
+								</ul>
+							</Accordion.Content>
+						</Accordion.Item>
+					</Accordion.Root>
+				</AlertDescription>
+			</Alert>
+		{/if}
 		<div class="space-y-8">
 			<!-- Public Keys Section -->
 			<Card>
