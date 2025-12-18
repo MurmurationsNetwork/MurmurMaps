@@ -184,7 +184,7 @@ Replace `<D1_DATABASE_NAME>`, `<D1_DATABASE_ID>` and `<Queue_NAME>` with your ne
     - PUBLIC_SERVER_DID_KEY(Text): Same way to generate during local setup.
     - PRIVATE_SERVER_KEY(Secret): Same way to generate during local setup.
 9. Bind with D1 database and Queue in the Worker Settings
-10. Setup Compatibility flags in Runtime in the Worker Settings.
+10. Setup Compatibility flags in Runtime in the Worker Settings
     - Compatibility flags: `nodejs_compat_v2`
 
 ### 4. Deploy the MurmurMaps Consumer (Required)
