@@ -129,7 +129,7 @@ pnpm dev
 
 Your application should now be available locally at: [http://localhost:5173](http://localhost:5173)
 
-## 6. Enable Admin Access (Local)
+### 6. Enable Admin Access (Local)
 
 1. Log in and create a user
 2. In the local D1 database, update `user_roles.role_id`:
