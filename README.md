@@ -1,10 +1,59 @@
 # MurmurMaps
 
-## Local Setup Guide
+## Overview
 
-This guide will help you set up and run MurmurMaps. Follow the steps in order to ensure a smooth installation.
+MurmurMaps is the unified application for the Murmurations Network ecosystem.
 
-## 1. Configure Environment Variables
+It provides a web-based interface for:
+
+- Cluster Management: Build clusters by querying the index and collecting matching profiles. Clusters support both **directory** and **map-based** views.
+- Index Explorer: Search, filter, and inspect profiles in the Murmurations Index.
+- Profile Generator: Generate new profiles from schema and update generated profiles.
+- Batch Importer: Import and update profiles in bulk using CSV files.
+- Index Updater: Propagate profile changes to update nodes in the Murmurations Index.
+- Administration: Manage users, roles, and capabilities using UCAN-based authorization.
+
+MurmurMaps is designed to run natively on Cloudflare Pages, Workers, D1, and Queues, enabling a fully serverless, scalable architecture.
+
+To handle long-running or resource-intensive tasks, MurmurMaps integrates with a companion Worker project called [MurmurMaps Consumer](https://github.com/MurmurationsNetwork/MurmurMapsConsumer), which processes background jobs asynchronously via Cloudflare Queues.
+
+## Architecture
+
+MurmurMaps is a single Cloudflare-based application.
+
+- **Frontend handling** (Cloudflare Pages)  
+  Handles the UI, murmurations features, authentication (UCAN), and creates jobs for long-running operations.
+
+- **Background processing** (Cloudflare Workers)
+  Processes long-running and bulk operations asynchronously via a Cloudflare Queue.
+
+Both contexts:
+
+- Share the same Cloudflare D1 database
+- Share the same Cloudflare Queue
+- Share the same data model
+
+⚠️ **The Cloudflare Workers act as Queue Consumer is required.**  
+MurmurMaps will not function correctly in production without the background worker deployed.
+
+## Technology Stack
+
+- Cloudflare Pages & Workers
+- Cloudflare D1
+- Cloudflare Queues
+- UCAN
+- pnpm
+- Svelte / SvelteKit
+- Shadcn-svelte
+
+## Local Develepment Guide
+
+### Prerequisites
+
+- Node.js (20+)
+- pnpm
+
+### 1. Configure Environment Variables
 
 First, copy the example environment file:
 
@@ -18,24 +67,20 @@ Second, Set the Maps's Tools URL:
 PUBLIC_TOOLS_URL=http://localhost:5173
 ```
 
-Finally, configure the **Resend API Key** for email-based account
-recovery. You can create a free account at
+Finally, configure the **Resend API Key** for email-based account recovery. You can create a free account at
 [Resend](https://resend.com/signup):
 
 ```bash
 PRIVATE_RESEND_KEY=<YOUR_API_KEY>
 ```
 
-## 2. Generate UCAN Server Keys
-
-Install the required packages:
+### 2. Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-Run the following command to generate UCAN server keys. Copy the output
-into your `.env` file:
+### 3. Generate UCAN Server Keys and copy generated values into `.env`
 
 ```bash
 pnpm generate-server-keys
@@ -52,20 +97,29 @@ PUBLIC_SERVER_DID_KEY=did:key:z6MkwEzW43zy5CJ4rSscCA4N6EpFGK6WHbFQrg8NxomZoEJS
 PRIVATE_SERVER_KEY=SClA0WPgndVIBcYMy9KNc2SVcsEFJEjGQdyxTNHTc+75ciH16VlgrKUcw/x8t6btDeb5FpvQwk2g8AVqIZPbdw==
 ```
 
-## 3. Set Up the Database
+Copy the above generated values into .env
 
-MurmurMaps uses **Cloudflare D1** as its database.
+```bash
+PUBLIC_SERVER_DID_KEY=...
+PRIVATE_SERVER_KEY=...
+```
 
-Run the migration command to initialize the local database:
+### 4. Initialize the Local Database
+
+MurmurMaps uses Cloudflare D1.
+For local development, Wrangler creates a local SQLite-backed database.
 
 ```bash
 pnpm db:migrate
 ```
 
-This will create a `.wrangler` folder containing a local SQLite database
-in `.wrangler/d1/`, which you can use for local testing and preview.
+The local database will be created under:
 
-## 4. Run the App
+```bash
+.wrangler/d1/
+```
+
+### 5. Run the App
 
 Start the development server:
 
@@ -75,12 +129,10 @@ pnpm dev
 
 Your application should now be available locally at: [http://localhost:5173](http://localhost:5173)
 
-## 5. Setup Admin Role
+## 6. Enable Admin Access (Local)
 
-Click the login button and select a name for the admin role. The public/private keypair generated in your browser will be associated with the username you create.
-
-Use your favorite database editor to find the `user_roles` table and change the `role_id` for the newly created account from `2` to `1`.
-
-Open up IndexedDB in your browser and delete the `core` database. Refresh the page and the cached UCAN token will be replaced with a new one with the roles permissions updated from user to admin.
-
-Navigate to <http://localhost:5173/admin> in your browser.
+1. Log in and create a user
+2. In the local D1 database, update `user_roles.role_id`:
+    - `2` → `1`
+3. Delete the core IndexedDB database in your browser
+4. Refresh the page and you'll be able to see admin panel through <http://localhost:5173/admin>
