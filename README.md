@@ -97,7 +97,7 @@ PUBLIC_SERVER_DID_KEY=did:key:z6MkwEzW43zy5CJ4rSscCA4N6EpFGK6WHbFQrg8NxomZoEJS
 PRIVATE_SERVER_KEY=SClA0WPgndVIBcYMy9KNc2SVcsEFJEjGQdyxTNHTc+75ciH16VlgrKUcw/x8t6btDeb5FpvQwk2g8AVqIZPbdw==
 ```
 
-Copy the above generated values into .env
+Copy the above generated values into `.env`
 
 ```bash
 PUBLIC_SERVER_DID_KEY=...
