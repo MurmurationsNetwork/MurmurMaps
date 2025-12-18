@@ -132,7 +132,7 @@ Your application should now be available locally at: <http://localhost:5173>
 
 1. Log in and create a user
 2. In the local D1 database, update `user_roles.role_id`:
-    - `2` → `1`
+   - `2` → `1`
 3. Delete the core IndexedDB database in your browser
 4. Refresh the page and you'll be able to see admin panel through <http://localhost:5173/admin>
 
@@ -174,14 +174,14 @@ Replace `<D1_DATABASE_NAME>`, `<D1_DATABASE_ID>` and `<Queue_NAME>` with your ne
 4. At the bottom of the page, under "Looking to deploy Pages? Get started", click "Get started"
 5. Choose a source repository, typically GitHub and select the MurmurMaps repository
 6. During setup, open Build settings and configure:
-    - **Framework preset**: `SvelteKit`
+   - **Framework preset**: `SvelteKit`
 7. Select "Save and Deploy"
 8. After first deployment, set the following Environment Variables in the Worker Settings:
-    - NODE_VERSION(Text): `22.14.0`
-    - PUBLIC_TOOLS_URL(Text): The public URL of the deployed app.You can set this **after the first deployment**, once the Pages URL is known.
-    - PRIVATE_RESEND_KEY(Secret): Same as local setup.
-    - PUBLIC_SERVER_DID_KEY(Text): Same way to generate during local setup.
-    - PRIVATE_SERVER_KEY(Secret): Same way to generate during local setup.
+   - NODE_VERSION(Text): `22.14.0`
+   - PUBLIC_TOOLS_URL(Text): The public URL of the deployed app.You can set this **after the first deployment**, once the Pages URL is known.
+   - PRIVATE_RESEND_KEY(Secret): Same as local setup.
+   - PUBLIC_SERVER_DID_KEY(Text): Same way to generate during local setup.
+   - PRIVATE_SERVER_KEY(Secret): Same way to generate during local setup.
 9. Bind with D1 database and Queue in the Worker Settings
 10. Setup Compatibility flags in Runtime in the Worker Settings
     - Compatibility flags: `nodejs_compat_v2`
