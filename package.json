@@ -31,7 +31,7 @@
 		"@playwright/test": "^1.57.0",
 		"@react-email/render": "^2.0.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.4",
-		"@sveltejs/kit": "^2.49.0",
+		"@sveltejs/kit": "^2.49.2",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/typography": "^0.5.19",
