@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@tanstack/svelte-query':
-        specifier: ^6.0.9
-        version: 6.0.9(svelte@5.45.2)
+        specifier: ^6.0.10
+        version: 6.0.10(svelte@5.45.2)
       '@ucans/ucans':
         specifier: ^0.12.0
         version: 0.12.0
@@ -148,8 +148,8 @@ importers:
         specifier: ^4.3.4
         version: 4.3.4(picomatch@4.0.3)(svelte@5.45.2)(typescript@5.9.3)
       svelte-sonner:
-        specifier: ^1.0.6
-        version: 1.0.6(svelte@5.45.2)
+        specifier: ^1.0.7
+        version: 1.0.7(svelte@5.45.2)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.4.0
@@ -1467,11 +1467,11 @@ packages:
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
 
-  '@tanstack/query-core@5.90.11':
-    resolution: {integrity: sha512-f9z/nXhCgWDF4lHqgIE30jxLe4sYv15QodfdPDKYAk7nAEjNcndy4dHz3ezhdUaR23BpWa4I2EH4/DZ0//Uf8A==}
+  '@tanstack/query-core@5.90.12':
+    resolution: {integrity: sha512-T1/8t5DhV/SisWjDnaiU2drl6ySvsHj1bHBCWNXd+/T+Hh1cf6JodyEYMd5sgwm+b/mETT4EV3H+zCVczCU5hg==}
 
-  '@tanstack/svelte-query@6.0.9':
-    resolution: {integrity: sha512-ezawzencc07h61M+p8R9Opp2CmpgGwrM05IsIGJiPkr1SrBPW8gDZ9sTdaQbEpzLNXMXaZUkq0MS+61Rw2EfSg==}
+  '@tanstack/svelte-query@6.0.10':
+    resolution: {integrity: sha512-J0kM3JNvRcRCM6cbHLeICs73aLp98N/nsihdVEtiNo3MEN4pAnO45qZ2yxX70MrEZ9vffXaCXMCChwgXs1lZ/Q==}
     peerDependencies:
       svelte: ^5.25.0
 
@@ -2860,8 +2860,8 @@ packages:
       svelte:
         optional: true
 
-  svelte-sonner@1.0.6:
-    resolution: {integrity: sha512-cOB6fKVPnJ/wuqHV4dqoTJ/l/g7n3V8goUHqnhIV2wyv55DdoCI1D3VQSBIs7Iy8pkH5ZaNPB8T53jFfXE/6og==}
+  svelte-sonner@1.0.7:
+    resolution: {integrity: sha512-1EUFYmd7q/xfs2qCHwJzGPh9n5VJ3X6QjBN10fof2vxgy8fYE7kVfZ7uGnd7i6fQaWIr5KvXcwYXE/cmTEjk5A==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -4107,11 +4107,11 @@ snapshots:
       tailwindcss: 4.1.18
       vite: 7.2.4(@types/node@22.19.1)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.1)
 
-  '@tanstack/query-core@5.90.11': {}
+  '@tanstack/query-core@5.90.12': {}
 
-  '@tanstack/svelte-query@6.0.9(svelte@5.45.2)':
+  '@tanstack/svelte-query@6.0.10(svelte@5.45.2)':
     dependencies:
-      '@tanstack/query-core': 5.90.11
+      '@tanstack/query-core': 5.90.12
       svelte: 5.45.2
 
   '@tanstack/table-core@8.21.3': {}
@@ -5449,7 +5449,7 @@ snapshots:
     optionalDependencies:
       svelte: 5.45.2
 
-  svelte-sonner@1.0.6(svelte@5.45.2):
+  svelte-sonner@1.0.7(svelte@5.45.2):
     dependencies:
       runed: 0.28.0(svelte@5.45.2)
       svelte: 5.45.2
