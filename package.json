@@ -75,7 +75,7 @@
 		"@tanstack/svelte-query": "^6.1.0",
 		"@ucans/ucans": "^0.12.0",
 		"diff": "^8.0.3",
-		"drizzle-orm": "^0.45.1",
+		"drizzle-orm": "^0.45.2",
 		"leaflet": "^1.9.4",
 		"leaflet.markercluster": "^1.5.3",
 		"paneforge": "1.0.2",
