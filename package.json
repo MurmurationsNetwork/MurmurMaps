@@ -22,7 +22,7 @@
 		"generate-server-keys": "pnpm exec tsx scripts/generate-server-keys.ts"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20260413.1",
+		"@cloudflare/workers-types": "^4.20260426.1",
 		"@eslint/compat": "^2.0.5",
 		"@eslint/js": "^10.0.1",
 		"@internationalized/date": "^3.12.0",
