@@ -340,19 +340,17 @@
 		}
 
 		const scheme = 'page';
-		let hierPart = currentPath;
 		let namespace = 'client';
 
 		let pathToCheck = currentPath;
 		if (currentPath.includes('/admin')) {
 			namespace = 'admin';
-			hierPart = currentPath.replace('/admin', '') || '/';
 			pathToCheck = currentPath.replace(/^\/admin/, '') || '/';
 		}
 
 		// Only check the first segment of the path. As long as the user has permission for the first segment, they should be able to access the rest of the path
 		const segments = pathToCheck.split('/').filter(Boolean);
-		hierPart = '/' + (segments[0] ?? '');
+		const hierPart = '/' + (segments[0] ?? '');
 
 		let isVerified = await verifyUcanWithCapabilities(currentToken, scheme, hierPart, namespace, [
 			'GET'
