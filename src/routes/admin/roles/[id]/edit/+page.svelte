@@ -13,10 +13,10 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const roleId = data.roleId ?? 0;
-	const allCapabilities = data.allCapabilities ?? [];
+	const roleId = $derived(data.roleId ?? 0);
+	const allCapabilities = $derived(data.allCapabilities ?? []);
 
-	let selectedCapabilityIds = $state(new Set(data.roleCapabilities));
+	let selectedCapabilityIds = $derived(new SvelteSet(data.roleCapabilities));
 	let isLoading = $state(false);
 
 	let isAllSelected = $derived(

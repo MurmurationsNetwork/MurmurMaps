@@ -32,7 +32,7 @@
 		enableSiteHints = value?.enableSiteHints ?? true;
 	});
 
-	const user = data?.user ?? null;
+	const user = $derived(data?.user ?? null);
 
 	let title = $state('');
 	let file: FileList | undefined = $state(undefined);

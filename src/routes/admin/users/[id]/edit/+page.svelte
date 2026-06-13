@@ -12,10 +12,10 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const userId = data.userId ?? 0;
-	const allRoles = data.allRoles ?? [];
+	const userId = $derived(data.userId ?? 0);
+	const allRoles = $derived(data.allRoles ?? []);
 
-	let selectedRoleIds = $state(new Set(data.userRoles));
+	let selectedRoleIds = $derived(new SvelteSet(data.userRoles));
 	let isLoading = $state(false);
 
 	function toggleRole(roleId: number) {

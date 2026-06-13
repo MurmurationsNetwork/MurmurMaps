@@ -30,7 +30,8 @@ export default ts.config(
 		files: ['**/*.svelte'],
 		rules: {
 			'svelte/valid-compile': 'off',
-			'svelte/no-navigation-without-resolve': 'off'
+			'svelte/no-navigation-without-resolve': 'off',
+			'no-useless-assignment': 'off'
 		},
 		languageOptions: {
 			parserOptions: {

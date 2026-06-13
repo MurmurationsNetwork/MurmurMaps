@@ -39,7 +39,7 @@
 	let sourceLibraryUrl: string = $state('');
 	let sourceIndexId: number | null = $state(null);
 
-	const user = data?.user ?? null;
+	const user = $derived(data?.user ?? null);
 
 	// Subscribe to dbStatus changes
 	dbStatus.subscribe((value) => (isDbOnline = value));

@@ -90,7 +90,7 @@ export async function signRequest(payload: string, privateKey: CryptoKey): Promi
 		return uint8arrays.toString(new Uint8Array(signature), 'base58btc');
 	} catch (error) {
 		console.error('Error signing request:', error);
-		throw new Error('Failed to sign request');
+		throw new Error('Failed to sign request', { cause: error });
 	}
 }
 
@@ -106,7 +106,7 @@ export async function exportPublicKey(publicKey: CryptoKey): Promise<string> {
 		return uint8arrays.toString(prefixed, 'base58btc');
 	} catch (error) {
 		console.error('Error exporting public key:', error);
-		throw new Error('Failed to export public key');
+		throw new Error('Failed to export public key', { cause: error });
 	}
 }
 

@@ -11,9 +11,9 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let node: Node | null = $state(data?.node ?? null);
-	let cluster: ClusterPublic = $state(data?.cluster);
-	let schema: JSONSchema7 | null = $state(data?.schema ?? null);
+	let node: Node | null = $derived(data?.node ?? null);
+	let cluster: ClusterPublic = $derived(data?.cluster);
+	let schema: JSONSchema7 | null = $derived(data?.schema ?? null);
 </script>
 
 {#if !cluster}

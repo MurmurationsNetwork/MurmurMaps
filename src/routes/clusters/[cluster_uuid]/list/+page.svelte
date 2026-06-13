@@ -24,15 +24,24 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let nodes: Node[] = $state(data?.nodes ?? []);
-	let cluster: ClusterPublic = $state(data?.cluster);
-	let meta: Meta | null = $state((data?.meta as Meta) ?? null);
-	let nameSearch: string = $state(data?.nameSearch ?? '');
-	let tagSearch: string = $state(data?.tagSearch ?? '');
-	let sort: 'name-asc' | 'name-desc' | 'default' = $state(data?.sort ?? 'default');
-	let enumsDropdown: DropdownField[] = $state(data?.enumsDropdown ?? []);
-	let enumFilters: Record<string, string> = $state(data?.enumFilters ?? {});
-	let schema: JSONSchema7 | null = $state(data?.schema ?? null);
+	let nodes: Node[] = $state(untrack(() => data?.nodes ?? []));
+	let cluster: ClusterPublic = $derived(data?.cluster);
+	let meta: Meta | null = $state(untrack(() => (data?.meta as Meta) ?? null));
+	let nameSearch: string = $state(untrack(() => data?.nameSearch ?? ''));
+	let tagSearch: string = $state(untrack(() => data?.tagSearch ?? ''));
+	let sort: 'name-asc' | 'name-desc' | 'default' = $state(untrack(() => data?.sort ?? 'default'));
+	let enumsDropdown: DropdownField[] = $derived(data?.enumsDropdown ?? []);
+	let enumFilters: Record<string, string> = $state(untrack(() => data?.enumFilters ?? {}));
+	let schema: JSONSchema7 | null = $derived(data?.schema ?? null);
+
+	$effect(() => {
+		nodes = data?.nodes ?? [];
+		meta = (data?.meta as Meta) ?? null;
+		nameSearch = data?.nameSearch ?? '';
+		tagSearch = data?.tagSearch ?? '';
+		sort = data?.sort ?? 'default';
+		enumFilters = data?.enumFilters ?? {};
+	});
 
 	const isDesktop = new MediaQuery('(min-width: 768px)');
 

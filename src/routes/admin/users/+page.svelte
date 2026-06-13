@@ -19,7 +19,7 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	let users = $state(data?.users);
+	let users = $derived(data?.users);
 
 	onMount(() => {
 		if (data?.error) {

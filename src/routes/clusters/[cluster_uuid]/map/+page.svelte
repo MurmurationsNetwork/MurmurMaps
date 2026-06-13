@@ -22,12 +22,19 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let nodes: MapNode[] = $state(data?.nodes ?? []);
-	let cluster: ClusterPublic = $state(data?.cluster);
-	let nameSearch: string = $state(data?.nameSearch ?? '');
-	let tagSearch: string = $state(data?.tagSearch ?? '');
-	let enumsDropdown: DropdownField[] = $state(data?.enumsDropdown ?? []);
-	let enumFilters: Record<string, string> = $state(data?.enumFilters ?? {});
+	let nodes: MapNode[] = $state(untrack(() => data?.nodes ?? []));
+	let cluster: ClusterPublic = $derived(data?.cluster);
+	let nameSearch: string = $state(untrack(() => data?.nameSearch ?? ''));
+	let tagSearch: string = $state(untrack(() => data?.tagSearch ?? ''));
+	let enumsDropdown: DropdownField[] = $derived(data?.enumsDropdown ?? []);
+	let enumFilters: Record<string, string> = $state(untrack(() => data?.enumFilters ?? {}));
+
+	$effect(() => {
+		nodes = data?.nodes ?? [];
+		nameSearch = data?.nameSearch ?? '';
+		tagSearch = data?.tagSearch ?? '';
+		enumFilters = data?.enumFilters ?? {};
+	});
 	let clusterInstance: MarkerClusterGroup | undefined = $state();
 
 	// Iframe configuration

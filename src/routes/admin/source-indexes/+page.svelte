@@ -20,7 +20,7 @@
 
 	let { data }: PageProps = $props();
 
-	let sourceIndexes = $state<SourceIndex[]>(data?.sourceIndexes ?? []);
+	let sourceIndexes = $derived<SourceIndex[]>(data?.sourceIndexes ?? []);
 
 	async function handleDelete(id: number) {
 		try {

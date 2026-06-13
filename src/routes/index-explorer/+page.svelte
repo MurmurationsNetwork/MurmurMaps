@@ -59,7 +59,7 @@
 		page_size: '30',
 		page: '1'
 	});
-	let searchParams: URLSearchParams = $state(data.loadSearchParams);
+	let searchParams: URLSearchParams = $derived(data.loadSearchParams);
 	let isLoading: boolean = $state(false);
 	let tagsFilterChecked: boolean = $state(false);
 	let tagsExactChecked: boolean = $state(false);

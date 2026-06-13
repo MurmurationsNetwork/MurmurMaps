@@ -23,7 +23,7 @@
 
 	let typedPage = page as unknown as CustomPageState;
 
-	let clusters = $state(data?.clusters ?? []);
+	let clusters = $derived(data?.clusters ?? []);
 
 	async function handleDeleteCluster(clusterUuid: string) {
 		try {

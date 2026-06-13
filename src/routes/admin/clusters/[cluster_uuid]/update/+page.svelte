@@ -25,7 +25,7 @@
 	let updateInterval: ReturnType<typeof setInterval> | null = null;
 	let updateStatus = $state<'pending' | 'processing' | 'completed' | 'failed'>('pending');
 	let jobUuid = $state<string | null>(null);
-	let clusterUuid = $state<string | null>(data?.clusterUuid ?? null);
+	let clusterUuid = $derived<string | null>(data?.clusterUuid ?? null);
 	let isLoading = $state(false);
 	let loadingProgress = $state(0);
 	let jobType: 'update-nodes' | 'update-node-statuses' | null = $state(null);

@@ -140,7 +140,7 @@
 		<Sidebar.Menu>
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg">
-					{#snippet child({ props }: { props: Record })}
+					{#snippet child({ props }: { props: Record<string, unknown> })}
 						<a href="/" {...props}>
 							<div
 								class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"

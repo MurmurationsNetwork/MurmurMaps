@@ -48,22 +48,25 @@
 
 	const items = writable<object[]>([{}]);
 
-	if (currentProfile && Array.isArray(currentProfile)) {
-		if (typeof currentProfile[0] === 'object' && !Array.isArray(currentProfile[0])) {
-			items.set(currentProfile as ProfileObject[]);
-		} else {
-			items.set(currentProfile.map((value) => ({ [fieldName]: value })));
+	function initFromProps() {
+		if (currentProfile && Array.isArray(currentProfile)) {
+			if (typeof currentProfile[0] === 'object' && !Array.isArray(currentProfile[0])) {
+				items.set(currentProfile as ProfileObject[]);
+			} else {
+				items.set(currentProfile.map((value) => ({ [fieldName]: value })));
+				fieldValue.update((v) => ({ ...v, [fieldName]: currentProfile }));
+			}
+		} else if (currentProfile && typeof currentProfile === 'object') {
+			fieldValue.set({ ...(currentProfile as ProfileObject) });
+		} else if (currentProfile !== undefined) {
 			fieldValue.update((v) => ({ ...v, [fieldName]: currentProfile }));
 		}
-	} else if (currentProfile && typeof currentProfile === 'object') {
-		fieldValue.set({ ...(currentProfile as ProfileObject) });
-	} else if (currentProfile !== undefined) {
-		fieldValue.update((v) => ({ ...v, [fieldName]: currentProfile }));
-	}
 
-	if (isParentArray) {
-		fieldValue.update((v) => ({ ...v, [fieldName]: v[fieldName] || [] }));
+		if (isParentArray) {
+			fieldValue.update((v) => ({ ...v, [fieldName]: v[fieldName] || [] }));
+		}
 	}
+	initFromProps();
 
 	function addItem(): void {
 		items.update((currentItems) => {
