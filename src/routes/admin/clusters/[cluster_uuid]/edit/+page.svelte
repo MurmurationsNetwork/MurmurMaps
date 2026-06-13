@@ -6,18 +6,26 @@
 	import { Label } from '$lib/components/ui/label';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
-	let clusterName = $state(data?.cluster?.name ?? '');
-	let clusterDescription = $state(data?.cluster?.description ?? '');
-	let clusterCenterLatitude = $state(data?.cluster?.centerLat ?? 0);
-	let clusterCenterLongitude = $state(data?.cluster?.centerLon ?? 0);
-	let clusterScale = $state(data?.cluster?.scale ?? 5);
+	let clusterName = $state(untrack(() => data?.cluster?.name ?? ''));
+	let clusterDescription = $state(untrack(() => data?.cluster?.description ?? ''));
+	let clusterCenterLatitude = $state(untrack(() => data?.cluster?.centerLat ?? 0));
+	let clusterCenterLongitude = $state(untrack(() => data?.cluster?.centerLon ?? 0));
+	let clusterScale = $state(untrack(() => data?.cluster?.scale ?? 5));
+
+	$effect(() => {
+		clusterName = data?.cluster?.name ?? '';
+		clusterDescription = data?.cluster?.description ?? '';
+		clusterCenterLatitude = data?.cluster?.centerLat ?? 0;
+		clusterCenterLongitude = data?.cluster?.centerLon ?? 0;
+		clusterScale = data?.cluster?.scale ?? 5;
+	});
 
 	let isUpdatingCluster = $state(false);
 

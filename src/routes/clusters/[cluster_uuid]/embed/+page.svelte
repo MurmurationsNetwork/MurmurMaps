@@ -18,14 +18,21 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let cluster = $state(data.cluster);
-	let nodes: MapNode[] = $state(data.nodes ?? []);
-	let enumsDropdown: DropdownField[] = $state(data.enumsDropdown ?? []);
-	let nameSearch: string = $state(data.nameSearch ?? '');
-	let tagSearch: string = $state(data.tagSearch ?? '');
-	let enumFilters: Record<string, string> = $state(data.enumFilters ?? {});
+	let cluster = $derived(data.cluster);
+	let nodes: MapNode[] = $state(untrack(() => data.nodes ?? []));
+	let enumsDropdown: DropdownField[] = $derived(data.enumsDropdown ?? []);
+	let nameSearch: string = $state(untrack(() => data.nameSearch ?? ''));
+	let tagSearch: string = $state(untrack(() => data.tagSearch ?? ''));
+	let enumFilters: Record<string, string> = $state(untrack(() => data.enumFilters ?? {}));
 	let clusterInstance: MarkerClusterGroup | undefined = $state();
-	let showSearch = $state(data.showSearch ?? true);
+	let showSearch = $derived(data.showSearch ?? true);
+
+	$effect(() => {
+		nodes = data.nodes ?? [];
+		nameSearch = data.nameSearch ?? '';
+		tagSearch = data.tagSearch ?? '';
+		enumFilters = data.enumFilters ?? {};
+	});
 
 	function getDropdownTriggerContent(dropdown: DropdownField, fieldName: string) {
 		const selectedValue = enumFilters[fieldName];

@@ -19,7 +19,7 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	let capabilities: Capability[] = $state(data?.capabilities);
+	let capabilities: Capability[] = $derived(data?.capabilities);
 
 	onMount(() => {
 		if (data?.error) {

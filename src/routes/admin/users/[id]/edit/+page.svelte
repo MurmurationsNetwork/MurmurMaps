@@ -6,16 +6,22 @@
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Label } from '$lib/components/ui/label';
 
+	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { SvelteSet } from 'svelte/reactivity';
 
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const userId = data.userId ?? 0;
-	const allRoles = data.allRoles ?? [];
+	const userId = $derived(data.userId ?? 0);
+	const allRoles = $derived(data.allRoles ?? []);
 
-	let selectedRoleIds = $state(new Set(data.userRoles));
+	// eslint-disable-next-line svelte/prefer-writable-derived
+	let selectedRoleIds = $state(untrack(() => new SvelteSet(data.userRoles)));
+
+	$effect(() => {
+		selectedRoleIds = new SvelteSet(data.userRoles);
+	});
 	let isLoading = $state(false);
 
 	function toggleRole(roleId: number) {

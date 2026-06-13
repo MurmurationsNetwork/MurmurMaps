@@ -17,14 +17,15 @@
 	import { diffJson } from 'diff';
 	import type { Change } from 'diff';
 
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy, onMount, untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
-	let nodes: Node[] = $state(data?.nodes ?? []);
+	// eslint-disable-next-line svelte/prefer-writable-derived
+	let nodes: Node[] = $state(untrack(() => data?.nodes ?? []));
 	let selectedIds: number[] = $state([]);
 
 	// Importing nodes
@@ -32,7 +33,11 @@
 	let jobType: 'create-nodes' | 'update-node-statuses' | null = $state(null);
 	let importProgress = $state<number>(0);
 	let importStatus = $state<'pending' | 'processing' | 'completed' | 'failed'>('pending');
-	let clusterUuid = $state<string | null>(data?.clusterUuid ?? null);
+	let clusterUuid = $derived<string | null>(data?.clusterUuid ?? null);
+
+	$effect(() => {
+		nodes = data?.nodes ?? [];
+	});
 	let jobUuid = $state<string | null>(null);
 	let importInterval: ReturnType<typeof setInterval> | null = null;
 

@@ -7,17 +7,30 @@
 	import { Label } from '$lib/components/ui/label';
 	import type { SourceIndexUpdateInput } from '$lib/types/source-index';
 
+	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 
-	let formData = $state<SourceIndexUpdateInput>({
-		url: data.sourceIndex?.url ?? '',
-		label: data.sourceIndex?.label ?? '',
-		libraryUrl: data.sourceIndex?.libraryUrl ?? '',
-		dataProxyUrl: data.sourceIndex?.dataProxyUrl ?? ''
+	// eslint-disable-next-line svelte/prefer-writable-derived
+	let formData = $state<SourceIndexUpdateInput>(
+		untrack(() => ({
+			url: data.sourceIndex?.url ?? '',
+			label: data.sourceIndex?.label ?? '',
+			libraryUrl: data.sourceIndex?.libraryUrl ?? '',
+			dataProxyUrl: data.sourceIndex?.dataProxyUrl ?? ''
+		}))
+	);
+
+	$effect(() => {
+		formData = {
+			url: data.sourceIndex?.url ?? '',
+			label: data.sourceIndex?.label ?? '',
+			libraryUrl: data.sourceIndex?.libraryUrl ?? '',
+			dataProxyUrl: data.sourceIndex?.dataProxyUrl ?? ''
+		};
 	});
 
 	let isSubmitting = $state(false);

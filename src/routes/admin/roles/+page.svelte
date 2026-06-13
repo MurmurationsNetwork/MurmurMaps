@@ -19,7 +19,7 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	let roles: Role[] = $state(data?.roles);
+	let roles: Role[] = $derived(data?.roles);
 
 	onMount(() => {
 		if (data?.error) {

@@ -17,27 +17,27 @@
 	import { Check, ChevronsUpDown } from '@lucide/svelte';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 
-	import { tick } from 'svelte';
+	import { tick, untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
-	const sourceIndexOptions = data?.sourceIndexes ?? [];
+	const sourceIndexOptions = $derived(data?.sourceIndexes ?? []);
 
-	const schemaOptions = $state(data?.schemas ?? []);
+	const schemaOptions = $derived(data?.schemas ?? []);
 
-	const countryOptions = $state(data?.countries ?? []);
+	const countryOptions = $derived(data?.countries ?? []);
 
 	let clusterName = $state('');
 	let clusterDescription = $state('');
 	let clusterCenterLatitude = $state(0);
 	let clusterCenterLongitude = $state(0);
 	let clusterScale = $state(5);
-	let sourceIndex = $state(sourceIndexOptions[0]?.url ?? '');
-	let sourceIndexId = $state(sourceIndexOptions[0]?.id ?? 0);
-	let schema = $state(schemaOptions[0]?.value ?? '');
+	let sourceIndex = $state(untrack(() => sourceIndexOptions[0]?.url ?? ''));
+	let sourceIndexId = $state(untrack(() => sourceIndexOptions[0]?.id ?? 0));
+	let schema = $state(untrack(() => schemaOptions[0]?.value ?? ''));
 	let name = $state('');
 	let lat = $state<number | null>(null);
 	let lon = $state<number | null>(null);
@@ -51,7 +51,14 @@
 	let primaryUrl = $state('');
 
 	let countrySearchOpen = $state(false);
-	let countrySearchResults = $state<{ label: string; value: string }[]>(data?.countries);
+	// eslint-disable-next-line svelte/prefer-writable-derived
+	let countrySearchResults = $state<{ label: string; value: string }[]>(
+		untrack(() => data?.countries ?? [])
+	);
+
+	$effect(() => {
+		countrySearchResults = data?.countries ?? [];
+	});
 	let triggerRef = $state<HTMLButtonElement>(null!);
 
 	let isCreatingCluster = $state(false);
