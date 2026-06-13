@@ -18,7 +18,7 @@
 	import { formatDate } from '$lib/utils/date';
 	import { ChevronLeftIcon, ChevronRightIcon } from '@lucide/svelte';
 
-	import { onMount, tick, untrack } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { SvelteURLSearchParams } from 'svelte/reactivity';
 	import { MediaQuery } from 'svelte/reactivity';
@@ -59,12 +59,7 @@
 		page_size: '30',
 		page: '1'
 	});
-	// eslint-disable-next-line svelte/prefer-writable-derived
-	let searchParams: URLSearchParams = $state(untrack(() => data.loadSearchParams));
-
-	$effect(() => {
-		searchParams = data.loadSearchParams;
-	});
+	let searchParams: URLSearchParams = $derived(data.loadSearchParams);
 	let isLoading: boolean = $state(false);
 	let tagsFilterChecked: boolean = $state(false);
 	let tagsExactChecked: boolean = $state(false);

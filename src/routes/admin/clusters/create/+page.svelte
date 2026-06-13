@@ -26,9 +26,9 @@
 
 	const sourceIndexOptions = $derived(data?.sourceIndexes ?? []);
 
-	const schemaOptions = $derived(data?.schemas ?? []);
+	const schemaOptions = $state(untrack(() => data?.schemas ?? []));
 
-	const countryOptions = $derived(data?.countries ?? []);
+	const countryOptions = $state(untrack(() => data?.countries ?? []));
 
 	let clusterName = $state('');
 	let clusterDescription = $state('');
@@ -51,14 +51,7 @@
 	let primaryUrl = $state('');
 
 	let countrySearchOpen = $state(false);
-	// eslint-disable-next-line svelte/prefer-writable-derived
-	let countrySearchResults = $state<{ label: string; value: string }[]>(
-		untrack(() => data?.countries ?? [])
-	);
-
-	$effect(() => {
-		countrySearchResults = data?.countries ?? [];
-	});
+	let countrySearchResults = $derived<{ label: string; value: string }[]>(data?.countries ?? []);
 	let triggerRef = $state<HTMLButtonElement>(null!);
 
 	let isCreatingCluster = $state(false);

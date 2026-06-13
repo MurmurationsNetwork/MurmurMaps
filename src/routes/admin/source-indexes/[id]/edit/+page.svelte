@@ -14,7 +14,6 @@
 
 	let { data }: { data: PageData } = $props();
 
-	// eslint-disable-next-line svelte/prefer-writable-derived
 	let formData = $state<SourceIndexUpdateInput>(
 		untrack(() => ({
 			url: data.sourceIndex?.url ?? '',
@@ -23,15 +22,6 @@
 			dataProxyUrl: data.sourceIndex?.dataProxyUrl ?? ''
 		}))
 	);
-
-	$effect(() => {
-		formData = {
-			url: data.sourceIndex?.url ?? '',
-			label: data.sourceIndex?.label ?? '',
-			libraryUrl: data.sourceIndex?.libraryUrl ?? '',
-			dataProxyUrl: data.sourceIndex?.dataProxyUrl ?? ''
-		};
-	});
 
 	let isSubmitting = $state(false);
 

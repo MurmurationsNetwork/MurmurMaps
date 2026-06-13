@@ -14,19 +14,13 @@
 	import type { SourceIndex } from '$lib/types/source-index';
 	import { Database, Plus, SquarePen, Trash2 } from '@lucide/svelte';
 
-	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
 
-	// eslint-disable-next-line svelte/prefer-writable-derived
-	let sourceIndexes = $state<SourceIndex[]>(untrack(() => data?.sourceIndexes ?? []));
-
-	$effect(() => {
-		sourceIndexes = data?.sourceIndexes ?? [];
-	});
+	let sourceIndexes = $derived<SourceIndex[]>(data?.sourceIndexes ?? []);
 
 	async function handleDelete(id: number) {
 		try {

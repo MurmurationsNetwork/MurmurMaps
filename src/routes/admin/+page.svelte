@@ -9,7 +9,6 @@
 	import { CircleAlert } from '@lucide/svelte';
 	import type { Page } from '@sveltejs/kit';
 
-	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
 
 	import type { PageProps } from './$types';
@@ -24,12 +23,7 @@
 
 	let typedPage = page as unknown as CustomPageState;
 
-	// eslint-disable-next-line svelte/prefer-writable-derived
-	let clusters = $state(untrack(() => data?.clusters ?? []));
-
-	$effect(() => {
-		clusters = data?.clusters ?? [];
-	});
+	let clusters = $derived(data?.clusters ?? []);
 
 	async function handleDeleteCluster(clusterUuid: string) {
 		try {

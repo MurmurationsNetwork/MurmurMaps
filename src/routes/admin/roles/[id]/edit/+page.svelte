@@ -6,7 +6,7 @@
 	import { Checkbox } from '$lib/components/ui/checkbox';
 	import { Label } from '$lib/components/ui/label';
 
-	import { onMount, untrack } from 'svelte';
+	import { onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';
 	import { SvelteSet } from 'svelte/reactivity';
 
@@ -16,12 +16,7 @@
 	const roleId = $derived(data.roleId ?? 0);
 	const allCapabilities = $derived(data.allCapabilities ?? []);
 
-	// eslint-disable-next-line svelte/prefer-writable-derived
-	let selectedCapabilityIds = $state(untrack(() => new SvelteSet(data.roleCapabilities)));
-
-	$effect(() => {
-		selectedCapabilityIds = new SvelteSet(data.roleCapabilities);
-	});
+	let selectedCapabilityIds = $derived(new SvelteSet(data.roleCapabilities));
 	let isLoading = $state(false);
 
 	let isAllSelected = $derived(
