@@ -212,8 +212,7 @@
 									id="iframe-code"
 									readonly
 									class="w-full h-20 p-2 text-xs border rounded resize-none bg-muted"
-									value={getIframeCode()}
-								></textarea>
+									value={getIframeCode()}></textarea>
 							</div>
 							<Button onclick={copyIframeCode} class="w-full">
 								{#if iframeCopied}
