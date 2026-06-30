@@ -30,8 +30,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2(svelte@5.56.4(@typescript-eslint/types@8.62.0))
       resend:
-        specifier: ^6.14.0
-        version: 6.14.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+        specifier: ^6.16.0
+        version: 6.16.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       uint8arrays:
         specifier: ^6.1.1
         version: 6.1.1
@@ -2363,8 +2363,8 @@ packages:
     resolution: {integrity: sha512-RSYAtP31mvYLkAHrOlh25pCNQ5hWnT106VukGaaFfuJrZFkGRX5GhUAdPqpSDXxOhA2c4akmRuplv1mRqnBn6Q==}
     engines: {node: '>=8'}
 
-  resend@6.14.0:
-    resolution: {integrity: sha512-jVdpUgOoWGLjaP64lo8KwzHT9gY4w6Dl8c36CIb2F+ayYOMLr3khqs8xrNjXM2k19b+lPoj0VWQFhVNLiToBjA==}
+  resend@6.16.0:
+    resolution: {integrity: sha512-SaKISwHtxvAxneF84Njgnzg+zdngUu1vOT/paRU1De9QF+zXQR3GnwJHSh+mpJPjUhsGD4WxYi5CfKkXMkDqwg==}
     engines: {node: '>=20'}
     peerDependencies:
       '@react-email/render': '*'
@@ -4563,7 +4563,7 @@ snapshots:
 
   regexparam@3.0.0: {}
 
-  resend@6.14.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
+  resend@6.16.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
     dependencies:
       postal-mime: 2.7.4
       standardwebhooks: 1.0.0
