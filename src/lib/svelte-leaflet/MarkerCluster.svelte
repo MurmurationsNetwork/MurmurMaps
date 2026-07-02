@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Map, MarkerClusterGroup } from 'leaflet';
-	import type { MarkerClusterGroupOptions } from 'leaflet';
+	import L, { Map } from 'leaflet';
+	import type { MarkerClusterGroup, MarkerClusterGroupOptions } from 'leaflet';
 	import 'leaflet.markercluster';
 	import 'leaflet.markercluster/dist/MarkerCluster.css';
 	import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
@@ -35,7 +35,7 @@
 	});
 
 	onMount(() => {
-		markerCluster = new MarkerClusterGroup(options);
+		markerCluster = new L.MarkerClusterGroup(options);
 		eventBridge = new EventBridge(markerCluster);
 		eventBridge.addEvents(restProps);
 		ready = true;
