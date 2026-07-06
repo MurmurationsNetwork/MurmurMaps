@@ -35,7 +35,7 @@
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/typography": "^0.5.20",
-		"@tailwindcss/vite": "^4.3.1",
+		"@tailwindcss/vite": "^4.3.2",
 		"@tanstack/table-core": "^8.21.3",
 		"@trivago/prettier-plugin-sort-imports": "^6.0.2",
 		"@types/json-schema": "^7.0.15",
