@@ -31,7 +31,7 @@ importers:
         version: 1.0.2(svelte@5.56.4(@typescript-eslint/types@8.62.0))
       resend:
         specifier: ^6.16.0
-        version: 6.16.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+        version: 6.16.0(@react-email/render@2.0.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
       uint8arrays:
         specifier: ^6.1.1
         version: 6.1.1
@@ -61,8 +61,8 @@ importers:
         specifier: ^1.61.1
         version: 1.61.1
       '@react-email/render':
-        specifier: ^2.0.9
-        version: 2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^2.0.10
+        version: 2.0.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.2.9
         version: 7.2.9(@sveltejs/kit@2.68.0(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.56.4(@typescript-eslint/types@8.62.0))(vite@8.1.0(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)))(svelte@5.56.4(@typescript-eslint/types@8.62.0))(typescript@6.0.3)(vite@8.1.0(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.22.4)(yaml@2.9.0)))(wrangler@4.105.0(@cloudflare/workers-types@4.20260629.1))
@@ -1012,8 +1012,8 @@ packages:
   '@poppinss/exception@1.2.3':
     resolution: {integrity: sha512-dCED+QRChTVatE9ibtoaxc+WkdzOSjYTKi/+uacHWIsfodVfpsueo3+DKpgU5Px8qXjgmXkSvhXvSCz3fnP9lw==}
 
-  '@react-email/render@2.0.9':
-    resolution: {integrity: sha512-M89LiXy2q+9tmQ4VMR0rYGuEe6NJ6HhZsSxBMoLwIia5fVOLcZQcZe2GEO0nAkLZspDjEhn7mtMRPmeMKECEdQ==}
+  '@react-email/render@2.0.10':
+    resolution: {integrity: sha512-QbgVvXeYenVi0LqkO+upcZzbyrD5Tz2wwCV+6CSzgo6ZsvwHLjf0x5Sr1C7DepcMhjYo++maJWRbcSoKMXKr1g==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: ^18.0 || ^19.0 || ^19.0.0-rc
@@ -3386,7 +3386,7 @@ snapshots:
 
   '@poppinss/exception@1.2.3': {}
 
-  '@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@react-email/render@2.0.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       html-to-text: 9.0.5
       prettier: 3.8.4
@@ -4563,12 +4563,12 @@ snapshots:
 
   regexparam@3.0.0: {}
 
-  resend@6.16.0(@react-email/render@2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
+  resend@6.16.0(@react-email/render@2.0.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)):
     dependencies:
       postal-mime: 2.7.4
       standardwebhooks: 1.0.0
     optionalDependencies:
-      '@react-email/render': 2.0.9(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-email/render': 2.0.10(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   resolve-pkg-maps@1.0.0: {}
 
