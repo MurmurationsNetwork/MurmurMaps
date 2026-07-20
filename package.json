@@ -69,7 +69,7 @@
 		"vite": "^8.1.5",
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vitest": "^4.1.10",
-		"wrangler": "^4.111.0"
+		"wrangler": "^4.112.0"
 	},
 	"dependencies": {
 		"@tanstack/svelte-query": "^6.1.36",
