@@ -50,7 +50,7 @@ MurmurMaps will not function correctly in production without the background work
 
 ### Prerequisites
 
-- Node.js (20+)
+- Node.js (24 required)
 - pnpm
 
 ### 1. Configure Environment Variables
@@ -177,7 +177,7 @@ Replace `<D1_DATABASE_NAME>`, `<D1_DATABASE_ID>` and `<Queue_NAME>` with your ne
    - **Framework preset**: `SvelteKit`
 7. Select "Save and Deploy"
 8. After first deployment, set the following Environment Variables in the Worker Settings:
-   - NODE_VERSION(Text): `22.14.0`
+   - NODE_VERSION(Text): `24.19.0`
    - PUBLIC_TOOLS_URL(Text): The public URL of the deployed app.You can set this **after the first deployment**, once the Pages URL is known.
    - PRIVATE_RESEND_KEY(Secret): Same as local setup.
    - PUBLIC_SERVER_DID_KEY(Text): Same way to generate during local setup.
