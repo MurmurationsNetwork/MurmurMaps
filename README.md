@@ -50,7 +50,7 @@ MurmurMaps will not function correctly in production without the background work
 
 ### Prerequisites
 
-- Node.js (24 LTS recommended, 22.22.1+ required)
+- Node.js (24 required)
 - pnpm
 
 ### 1. Configure Environment Variables
