@@ -52,8 +52,8 @@ importers:
         specifier: ^3.12.3
         version: 3.12.3
       '@lucide/svelte':
-        specifier: ^1.30.0
-        version: 1.30.0(svelte@5.57.2(@typescript-eslint/types@8.66.0))
+        specifier: ^1.58.0
+        version: 1.58.0(svelte@5.57.2(@typescript-eslint/types@8.66.0))
       '@paralleldrive/cuid2':
         specifier: ^3.3.0
         version: 3.3.0
@@ -1154,8 +1154,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@lucide/svelte@1.30.0':
-    resolution: {integrity: sha512-KtVrqWT3BD41kf1CPaP4QTAyofw0xm5hw/JGwd76+wMk1l0ZcXskA2Wi9ANVWCsk7mGrpFo2SqL3Hl29xTkV3w==}
+  '@lucide/svelte@1.58.0':
+    resolution: {integrity: sha512-yUKVOUokJews09DTEf23We9/0Lju+XR+1Pcr6rYZBilpf4Uf6T3XRmalUgOsQW0drFfCI53WlIzgokkq2EqwYg==}
     peerDependencies:
       svelte: ^5
 
@@ -3615,7 +3615,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lucide/svelte@1.30.0(svelte@5.57.2(@typescript-eslint/types@8.66.0))':
+  '@lucide/svelte@1.58.0(svelte@5.57.2(@typescript-eslint/types@8.66.0))':
     dependencies:
       svelte: 5.57.2(@typescript-eslint/types@8.66.0)
 
