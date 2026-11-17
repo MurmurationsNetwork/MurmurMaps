@@ -4,3 +4,10 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    groups:
+      # One PR per week for all minor and patch bumps. Major bumps are not
+      # matched by this group, so each still gets its own PR.
+      minor-and-patch:
+        update-types:
+          - 'minor'
+          - 'patch'
