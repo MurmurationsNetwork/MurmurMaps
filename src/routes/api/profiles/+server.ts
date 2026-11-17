@@ -1,21 +1,16 @@
-import { validateProfile } from '$lib/api/profiles';
-import { getDB } from '$lib/server/db';
-import { createProfile, getProfilesByUserId } from '$lib/server/models/profiles';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { getSourceIndexById } from '$lib/server/models/source-index';
-import type { ProfileInsert, ProfileObject } from '$lib/types/profile';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { validateProfile } from '#lib/api/profiles.ts';
+import { getDB } from '#lib/server/db/index.ts';
+import { createProfile, getProfilesByUserId } from '#lib/server/models/profiles.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { getSourceIndexById } from '#lib/server/models/source-index.ts';
+import type { ProfileInsert, ProfileObject } from '#lib/types/profile.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { createId } from '@paralleldrive/cuid2';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request,
-	url
-}) => {
+export const GET: RequestHandler = async ({ request, url }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -53,12 +48,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

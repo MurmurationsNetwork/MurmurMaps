@@ -1,19 +1,18 @@
-import { getDB } from '$lib/server/db';
+import { getDB } from '#lib/server/db/index.ts';
 import {
 	createSourceIndex,
 	getSourceIndexByUrlIncludingDeleted,
 	getSourceIndexes,
 	restoreSourceIndex
-} from '$lib/server/models/source-index';
-import type { SourceIndex } from '$lib/types/source-index';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+} from '#lib/server/models/source-index.ts';
+import type { SourceIndex } from '#lib/types/source-index.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({ platform = { env: { DB: {} as D1Database } } }) => {
+export const GET: RequestHandler = async () => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const sourceIndexData = await getSourceIndexes(db);
 
 		const sourceIndexes: SourceIndex[] = sourceIndexData as SourceIndex[];
@@ -25,12 +24,9 @@ export const GET: RequestHandler = async ({ platform = { env: { DB: {} as D1Data
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { url, label, libraryUrl, dataProxyUrl } = await request.json();
 

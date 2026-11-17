@@ -1,4 +1,4 @@
-import { roleCapabilities, userRoles, users } from '$lib/server/db/schema';
+import { roleCapabilities, userRoles, users } from '#lib/server/db/schema.ts';
 import { eq, inArray, sql } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

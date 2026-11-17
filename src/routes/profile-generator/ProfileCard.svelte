@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { getIndexStatus } from '$lib/api/profiles';
-	import { deleteIndex, deleteProfile } from '$lib/api/profiles';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
-	import { Separator } from '$lib/components/ui/separator';
-	import { dbStatus } from '$lib/stores/db-status';
+	import { getIndexStatus } from '#lib/api/profiles.ts';
+	import { deleteIndex, deleteProfile } from '#lib/api/profiles.ts';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.ts';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { buttonVariants } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
+	import { Separator } from '#lib/components/ui/separator/index.ts';
+	import { dbStatus } from '#lib/stores/db-status.ts';
 	import { Clock, Database, SquarePen, Trash2 } from '@lucide/svelte';
 	import { createQuery, QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 

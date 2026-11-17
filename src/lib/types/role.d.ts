@@ -1,4 +1,4 @@
-import type { roles } from '$lib/server/db/schema';
+import type { roles } from '#lib/server/db/schema.ts';
 
 export type Role = typeof roles.$inferSelect;
 

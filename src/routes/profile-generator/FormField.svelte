@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import type { ProfileArray, ProfileObject, ProfileValue } from '$lib/types/profile';
-	import type { Field } from '$lib/types/schema';
+	} from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import type { ProfileArray, ProfileObject, ProfileValue } from '#lib/types/profile.d.ts';
+	import type { Field } from '#lib/types/schema.d.ts';
 
 	import type { Writable } from 'svelte/store';
 	import { writable } from 'svelte/store';

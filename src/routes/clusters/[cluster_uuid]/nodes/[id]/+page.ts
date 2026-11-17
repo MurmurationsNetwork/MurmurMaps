@@ -1,6 +1,6 @@
-import { getCluster } from '$lib/api/clusters';
-import { getPublishedNode } from '$lib/api/nodes';
-import { getSchema } from '$lib/api/schemas';
+import { getCluster } from '#lib/api/clusters.ts';
+import { getPublishedNode } from '#lib/api/nodes.ts';
+import { getSchema } from '#lib/api/schemas.ts';
 
 import type { PageLoad } from './$types';
 

@@ -1,13 +1,12 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { deleteCluster } from '$lib/api/clusters';
-	import { Alert, AlertTitle } from '$lib/components/ui/alert';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-	import { Button } from '$lib/components/ui/button';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import { formatDate } from '$lib/utils/date';
+	import { deleteCluster } from '#lib/api/clusters.ts';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.ts';
+	import { Alert, AlertTitle } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { buttonVariants } from '#lib/components/ui/button/index.ts';
+	import { formatDate } from '#lib/utils/date.ts';
+	import { page, type Page } from '$app/state';
 	import { CircleAlert } from '@lucide/svelte';
-	import type { Page } from '@sveltejs/kit';
 
 	import { toast } from 'svelte-sonner';
 

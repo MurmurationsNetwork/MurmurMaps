@@ -1,17 +1,13 @@
-import { getDB } from '$lib/server/db';
-import { createRole, getRoles } from '$lib/server/models/role';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { createRole, getRoles } from '#lib/server/models/role.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const GET: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -33,12 +29,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

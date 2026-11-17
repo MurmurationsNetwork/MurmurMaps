@@ -1,4 +1,4 @@
-import type { loginTokens } from '$lib/server/db/schema';
+import type { loginTokens } from '#lib/server/db/schema.ts';
 
 export type LoginToken = typeof loginTokens.$inferSelect;
 

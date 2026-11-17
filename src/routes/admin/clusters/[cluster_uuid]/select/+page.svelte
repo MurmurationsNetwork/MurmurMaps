@@ -1,18 +1,17 @@
 <script lang="ts">
+	import { getJobByUuidAndTarget } from '#lib/api/job.ts';
+	import { updateNodeStatuses } from '#lib/api/nodes.ts';
+	import { getNodes } from '#lib/api/nodes.ts';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.ts';
+	import * as Dialog from '#lib/components/ui/dialog/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import { Progress } from '#lib/components/ui/progress/index.ts';
+	import * as Select from '#lib/components/ui/select/index.ts';
+	import * as Table from '#lib/components/ui/table/index.ts';
+	import type { Node } from '#lib/types/node.d.ts';
 	import { goto } from '$app/navigation';
-	import { replaceState } from '$app/navigation';
-	import { getJobByUuidAndTarget } from '$lib/api/job';
-	import { updateNodeStatuses } from '$lib/api/nodes';
-	import { getNodes } from '$lib/api/nodes';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import * as Dialog from '$lib/components/ui/dialog';
-	import { Label } from '$lib/components/ui/label';
-	import { Progress } from '$lib/components/ui/progress';
-	import * as Select from '$lib/components/ui/select';
-	import * as Table from '$lib/components/ui/table';
-	import type { Node } from '$lib/types/node';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 	import { diffJson } from 'diff';
 	import type { Change } from 'diff';
@@ -223,7 +222,7 @@
 			// Update the URL with the jobUuid
 			const url = new URL(window.location.href);
 			url.searchParams.set('jobUuid', newJobUuid);
-			replaceState(url.pathname + url.search, '');
+			goto(url.pathname + url.search, { shallow: true, replace: true, state: '' });
 
 			startPolling();
 		} catch (error) {

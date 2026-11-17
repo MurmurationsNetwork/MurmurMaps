@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { getClusters } from '$lib/api/clusters';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
-	import { sourceIndexStore } from '$lib/stores/source-index';
-	import { currentTokenStore } from '$lib/stores/token-store';
-	import { userStore } from '$lib/stores/user-store';
-	import type { Cluster } from '$lib/types/cluster';
-	import { formatDate } from '$lib/utils/date';
+	import { getClusters } from '#lib/api/clusters.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription, AlertTitle } from '#lib/components/ui/alert/index.ts';
+	import { sourceIndexStore } from '#lib/stores/source-index.ts';
+	import { currentTokenStore } from '#lib/stores/token-store.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { Cluster } from '#lib/types/cluster.d.ts';
+	import { formatDate } from '#lib/utils/date.ts';
 
 	let currentToken: string | null = $state(null);
 	let enableSiteHints: boolean = $state(true);

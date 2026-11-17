@@ -1,4 +1,4 @@
-import type { profiles } from '$lib/server/db/schema';
+import type { profiles } from '#lib/server/db/schema.ts';
 
 export interface ProfileData {
 	[key: string]: string | number | boolean | Date | null | ProfileData | ProfileData[];

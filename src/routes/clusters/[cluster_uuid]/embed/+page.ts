@@ -1,5 +1,5 @@
-import { getCluster, getEnumsDropdown } from '$lib/api/clusters';
-import { getPublishedMapNodes } from '$lib/api/nodes';
+import { getCluster, getEnumsDropdown } from '#lib/api/clusters.ts';
+import { getPublishedMapNodes } from '#lib/api/nodes.ts';
 
 import type { PageLoad } from './$types';
 

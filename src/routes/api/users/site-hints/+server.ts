@@ -1,17 +1,13 @@
-import { getDB } from '$lib/server/db';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { updateUserSiteHints } from '$lib/server/models/user';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { updateUserSiteHints } from '#lib/server/models/user.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const PATCH: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const PATCH: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

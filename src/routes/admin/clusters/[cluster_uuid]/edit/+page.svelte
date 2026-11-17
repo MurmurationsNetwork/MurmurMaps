@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { updateCluster } from '#lib/api/clusters.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
 	import { goto } from '$app/navigation';
-	import { updateCluster } from '$lib/api/clusters';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 
 	import { onMount, untrack } from 'svelte';

@@ -1,22 +1,22 @@
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Button } from '$lib/components/ui/button';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { getToken } from '$lib/core';
-	import { getKey } from '$lib/crypto';
-	import { userStore } from '$lib/stores/user-store';
-	import { toDidableKey } from '$lib/utils/ucan-utils';
+	} from '#lib/components/ui/card/index.ts';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import { Textarea } from '#lib/components/ui/textarea/index.ts';
+	import { getToken } from '#lib/core.ts';
+	import { getKey } from '#lib/crypto.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import { toDidableKey } from '#lib/utils/ucan-utils.ts';
 	import * as ucans from '@ucans/ucans';
 
 	import { onMount, tick } from 'svelte';

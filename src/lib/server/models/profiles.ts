@@ -1,5 +1,5 @@
-import { profiles } from '$lib/server/db/schema';
-import type { ProfileDbUpdateInput, ProfileInsert } from '$lib/types/profile';
+import { profiles } from '#lib/server/db/schema.ts';
+import type { ProfileDbUpdateInput, ProfileInsert } from '#lib/types/profile.d.ts';
 import { and, eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

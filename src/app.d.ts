@@ -6,16 +6,7 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
-		interface Platform {
-			env: {
-				DB: D1Database;
-				JOB_QUEUE: Queue;
-			};
-			context: {
-				waitUntil(promise: Promise<unknown>): void;
-			};
-			caches: CacheStorage & { default: Cache };
-		}
+		// interface Platform {}
 	}
 
 	interface Window {

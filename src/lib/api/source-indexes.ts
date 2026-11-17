@@ -1,9 +1,9 @@
-import { request } from '$lib/api/request';
+import { request } from '#lib/api/request.ts';
 import type {
 	SourceIndex,
 	SourceIndexInsert,
 	SourceIndexUpdateInput
-} from '$lib/types/source-index';
+} from '#lib/types/source-index.d.ts';
 
 export const getSourceIndexes = async (customFetch?: typeof fetch) =>
 	request<undefined, SourceIndex[]>('/api/source-indexes', 'GET', undefined, customFetch);

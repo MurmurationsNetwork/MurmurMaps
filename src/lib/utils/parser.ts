@@ -1,4 +1,4 @@
-import type { RetrievedSchema, Schema } from '$lib/types/schema';
+import type { RetrievedSchema, Schema } from '#lib/types/schema.d.ts';
 
 export const parseRef = async (
 	schemaName: string | string[],

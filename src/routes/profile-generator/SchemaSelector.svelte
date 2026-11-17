@@ -1,7 +1,7 @@
 <script lang="ts">
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
 	import { page } from '$app/state';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
 
 	interface Props {
 		schemasList: string[];

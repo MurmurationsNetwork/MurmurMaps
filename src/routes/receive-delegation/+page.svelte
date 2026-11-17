@@ -1,16 +1,16 @@
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Button } from '$lib/components/ui/button';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+	} from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
 	import {
 		Table,
 		TableBody,
@@ -18,15 +18,15 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { getDelegations, storeDelegations } from '$lib/core';
-	import { getKey } from '$lib/crypto';
-	import { delegationsStore } from '$lib/stores/token-store';
-	import { userStore } from '$lib/stores/user-store';
-	import type { Delegation } from '$lib/types/delegation';
-	import { decodeUcanToDelegation } from '$lib/utils/ucan-utils';
-	import { toDidableKey } from '$lib/utils/ucan-utils';
+	} from '#lib/components/ui/table/index.ts';
+	import { Textarea } from '#lib/components/ui/textarea/index.ts';
+	import { getDelegations, storeDelegations } from '#lib/core.ts';
+	import { getKey } from '#lib/crypto.ts';
+	import { delegationsStore } from '#lib/stores/token-store.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { Delegation } from '#lib/types/delegation.d.ts';
+	import { decodeUcanToDelegation } from '#lib/utils/ucan-utils.ts';
+	import { toDidableKey } from '#lib/utils/ucan-utils.ts';
 	import { Trash2 } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

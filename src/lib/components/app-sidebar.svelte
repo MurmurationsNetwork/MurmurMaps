@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import { checkAdminCapability } from '$lib/utils/ucan-utils';
+	import { checkAdminCapability } from '#lib/utils/ucan-utils.ts';
 	import {
 		Boxes,
 		CircleUserRound,
@@ -101,9 +101,9 @@
 </script>
 
 <script lang="ts">
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { userStore } from '$lib/stores/user-store';
-	import type { User } from '$lib/types/user';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { User } from '#lib/types/user.d.ts';
 	import MapPinIcon from '@lucide/svelte/icons/map-pin';
 
 	import type { ComponentProps } from 'svelte';

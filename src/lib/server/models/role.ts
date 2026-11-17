@@ -1,5 +1,5 @@
-import { roles } from '$lib/server/db/schema';
-import type { RoleInsert } from '$lib/types/role';
+import { roles } from '#lib/server/db/schema.ts';
+import type { RoleInsert } from '#lib/types/role.d.ts';
 import { inArray } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

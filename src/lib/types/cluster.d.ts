@@ -1,4 +1,4 @@
-import { clusters } from '$lib/server/db/schema';
+import { clusters } from '#lib/server/db/schema.ts';
 
 export type Cluster = typeof clusters.$inferSelect;
 

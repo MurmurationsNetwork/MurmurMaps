@@ -1,5 +1,5 @@
-import { request } from '$lib/api/request';
-import type { User, UserWithRoles } from '$lib/types/user';
+import { request } from '#lib/api/request.ts';
+import type { User, UserWithRoles } from '#lib/types/user.d.ts';
 
 export const getUser = (customFetch?: typeof fetch) =>
 	request<undefined, User>('/api/users', 'GET', undefined, customFetch);

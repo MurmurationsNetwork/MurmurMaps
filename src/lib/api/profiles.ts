@@ -1,10 +1,10 @@
-import { request } from '$lib/api/request';
+import { request } from '#lib/api/request.ts';
 import type {
 	Profile,
 	ProfileCreateInput,
 	ProfileObject,
 	ProfileUpdateInput
-} from '$lib/types/profile';
+} from '#lib/types/profile.d.ts';
 
 export const validateProfile = (
 	profile: ProfileObject,

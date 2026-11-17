@@ -1,4 +1,4 @@
-import type { ProfileData } from '$lib/types/profile';
+import type { ProfileData } from '#lib/types/profile.d.ts';
 
 export async function fetchProfileData(profileUrl: string) {
 	let profileData: ProfileData = {};

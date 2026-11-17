@@ -1,4 +1,4 @@
-import { sourceIndexes } from '$lib/server/db/schema';
+import { sourceIndexes } from '#lib/server/db/schema.ts';
 
 export type SourceIndex = typeof sourceIndexes.$inferSelect;
 

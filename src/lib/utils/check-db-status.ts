@@ -1,4 +1,4 @@
-import { dbStatus } from '$lib/stores/db-status';
+import { dbStatus } from '#lib/stores/db-status.ts';
 
 export function checkDbStatus(): void {
 	const checkStatus = async () => {

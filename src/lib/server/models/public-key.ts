@@ -1,4 +1,4 @@
-import { publicKeys } from '$lib/server/db/schema';
+import { publicKeys } from '#lib/server/db/schema.ts';
 import { and, eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

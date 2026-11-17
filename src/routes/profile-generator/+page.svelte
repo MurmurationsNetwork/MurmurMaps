@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { getProfile, getProfiles } from '$lib/api/profiles';
-	import { getSchemas } from '$lib/api/schemas';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Card, CardContent } from '$lib/components/ui/card';
-	import { dbStatus } from '$lib/stores/db-status';
-	import { sourceIndexStore } from '$lib/stores/source-index';
-	import { userStore } from '$lib/stores/user-store';
-	import type { Profile, ProfileCardType, ProfileObject } from '$lib/types/profile';
+	import { getProfile, getProfiles } from '#lib/api/profiles.ts';
+	import { getSchemas } from '#lib/api/schemas.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
+	import { dbStatus } from '#lib/stores/db-status.ts';
+	import { sourceIndexStore } from '#lib/stores/source-index.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { Profile, ProfileCardType, ProfileObject } from '#lib/types/profile.d.ts';
 	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
 
 	import { onMount } from 'svelte';

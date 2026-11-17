@@ -1,27 +1,27 @@
 <script lang="ts">
-	import { addEmail, deleteEmail, getEmails } from '$lib/api/emails';
-	import { deletePublicKey, getPublicKeys } from '$lib/api/keys';
-	import { createToken, deleteToken, getTokens } from '$lib/api/tokens';
-	import { resetEmail, updateSiteHints } from '$lib/api/users';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { AlertTitle } from '$lib/components/ui/alert';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
+	import { addEmail, deleteEmail, getEmails } from '#lib/api/emails.ts';
+	import { deletePublicKey, getPublicKeys } from '#lib/api/keys.ts';
+	import { createToken, deleteToken, getTokens } from '#lib/api/tokens.ts';
+	import { resetEmail, updateSiteHints } from '#lib/api/users.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { AlertTitle } from '#lib/components/ui/alert/index.ts';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Switch } from '$lib/components/ui/switch';
-	import { userStore } from '$lib/stores/user-store';
-	import type { PageLoginToken } from '$lib/types/token';
-	import type { User } from '$lib/types/user';
-	import { isValidEmail } from '$lib/utils/validators';
+	} from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import { Switch } from '#lib/components/ui/switch/index.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { PageLoginToken } from '#lib/types/token.d.ts';
+	import type { User } from '#lib/types/user.d.ts';
+	import { isValidEmail } from '#lib/utils/validators.ts';
 	import { CircleAlert } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

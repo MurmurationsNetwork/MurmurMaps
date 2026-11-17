@@ -1,7 +1,7 @@
-import { PUBLIC_SERVER_DID_KEY } from '$env/static/public';
-import { removeDidPrefix } from '$lib/crypto';
-import type { CryptoKeyPair } from '$lib/types/crypto';
-import type { Delegation } from '$lib/types/delegation';
+import { removeDidPrefix } from '#lib/crypto.ts';
+import type { CryptoKeyPair } from '#lib/types/crypto.d.ts';
+import type { Delegation } from '#lib/types/delegation.d.ts';
+import { PUBLIC_SERVER_DID_KEY } from '$app/env/public';
 import type { DidableKey } from '@ucans/ucans';
 import * as ucans from '@ucans/ucans';
 import * as uint8arrays from 'uint8arrays';

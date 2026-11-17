@@ -1,15 +1,11 @@
-import { getDB } from '$lib/server/db';
-import { getNodes } from '$lib/server/models/node';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getNodes } from '#lib/server/models/node.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params
-}) => {
+export const GET: RequestHandler = async ({ params }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const clusterUuid = params.cluster_uuid;
 
 		if (!clusterUuid) {

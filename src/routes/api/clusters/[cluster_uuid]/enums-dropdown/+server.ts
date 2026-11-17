@@ -1,12 +1,11 @@
-import { getDB } from '$lib/server/db';
-import { getCluster } from '$lib/server/models/cluster';
-import { getSourceIndexByUrl } from '$lib/server/models/source-index';
-import type { DropdownField, SchemaData, SchemaProperty } from '$lib/types/enum-dropdown';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getCluster } from '#lib/server/models/cluster.ts';
+import { getSourceIndexByUrl } from '#lib/server/models/source-index.ts';
+import type { DropdownField, SchemaData, SchemaProperty } from '#lib/types/enum-dropdown.d.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({ params, platform }) => {
-	const db = getDB(platform?.env as { DB: D1Database });
+export const GET: RequestHandler = async ({ params }) => {
+	const db = getDB();
 	const clusterUuid = params.cluster_uuid;
 
 	if (!clusterUuid) {

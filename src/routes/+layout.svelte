@@ -1,34 +1,34 @@
 <script lang="ts">
-	import { beforeNavigate, goto } from '$app/navigation';
-	import { page } from '$app/state';
-	import { refreshRootToken } from '$lib/api/request';
-	import { getUser } from '$lib/api/users';
-	import AppSidebar from '$lib/components/app-sidebar.svelte';
-	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
-	import * as Select from '$lib/components/ui/select/index.js';
-	import { Separator } from '$lib/components/ui/separator/index.js';
-	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { Skeleton } from '$lib/components/ui/skeleton/index.js';
-	import { Toaster } from '$lib/components/ui/sonner';
-	import { getDelegations, getToken, storeDelegations, storeToken } from '$lib/core';
-	import { getOrCreateKeyPair } from '$lib/crypto';
-	import { dbStatus } from '$lib/stores/db-status';
-	import { sourceIndexStore } from '$lib/stores/source-index';
+	import { refreshRootToken } from '#lib/api/request.ts';
+	import { getUser } from '#lib/api/users.ts';
+	import AppSidebar from '#lib/components/app-sidebar.svelte';
+	import * as Breadcrumb from '#lib/components/ui/breadcrumb/index.js';
+	import * as Select from '#lib/components/ui/select/index.js';
+	import { Separator } from '#lib/components/ui/separator/index.js';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
+	import { Skeleton } from '#lib/components/ui/skeleton/index.js';
+	import { Toaster } from '#lib/components/ui/sonner/index.ts';
+	import { getDelegations, getToken, storeDelegations, storeToken } from '#lib/core.ts';
+	import { getOrCreateKeyPair } from '#lib/crypto.ts';
+	import { dbStatus } from '#lib/stores/db-status.ts';
+	import { sourceIndexStore } from '#lib/stores/source-index.ts';
 	import {
 		currentTokenStore,
 		delegationsStore,
 		rootTokenStore,
 		selectedDelegationStore
-	} from '$lib/stores/token-store';
-	import { userStore } from '$lib/stores/user-store';
-	import type { CryptoKeyPair } from '$lib/types/crypto';
-	import type { Delegation } from '$lib/types/delegation';
-	import { checkDbStatus } from '$lib/utils/check-db-status';
+	} from '#lib/stores/token-store.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { CryptoKeyPair } from '#lib/types/crypto.d.ts';
+	import type { Delegation } from '#lib/types/delegation.d.ts';
+	import { checkDbStatus } from '#lib/utils/check-db-status.ts';
 	import {
 		issueAccessUcan,
 		isUcanExpired,
 		verifyUcanWithCapabilities
-	} from '$lib/utils/ucan-utils';
+	} from '#lib/utils/ucan-utils.ts';
+	import { beforeNavigate, goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import { CircleAlert, Clock, User, WifiOff } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';
@@ -294,6 +294,7 @@
 	});
 
 	beforeNavigate(async (nav) => {
+		if (nav.shallow && nav.type === 'goto') return;
 		if (!nav.to) return;
 		if (nav.to.url.pathname === page.url.pathname) return;
 
