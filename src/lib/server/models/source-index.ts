@@ -1,5 +1,5 @@
-import { sourceIndexes } from '$lib/server/db/schema';
-import type { SourceIndexDbUpdateInput, SourceIndexInsert } from '$lib/types/source-index';
+import { sourceIndexes } from '#lib/server/db/schema.ts';
+import type { SourceIndexDbUpdateInput, SourceIndexInsert } from '#lib/types/source-index.d.ts';
 import { and, eq, isNull } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

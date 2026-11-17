@@ -1,12 +1,12 @@
-import { request } from '$lib/api/request';
+import { request } from '#lib/api/request.ts';
 import type {
 	Cluster,
 	ClusterCreateInput,
 	ClusterPublic,
 	ClusterUpdateInput,
 	ClusterWithJobUuid
-} from '$lib/types/cluster';
-import type { DropdownField } from '$lib/types/enum-dropdown';
+} from '#lib/types/cluster.d.ts';
+import type { DropdownField } from '#lib/types/enum-dropdown.d.ts';
 
 export const getClusters = async (sourceIndexId?: number, customFetch?: typeof fetch) => {
 	if (sourceIndexId) {

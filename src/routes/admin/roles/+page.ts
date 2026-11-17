@@ -1,4 +1,4 @@
-import { getRoles } from '$lib/api/role';
+import { getRoles } from '#lib/api/role.ts';
 
 import type { PageLoad } from './$types';
 

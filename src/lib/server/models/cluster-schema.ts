@@ -1,4 +1,4 @@
-import { clusterSchemas } from '$lib/server/db/schema';
+import { clusterSchemas } from '#lib/server/db/schema.ts';
 import { eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 import type { JSONSchema7 } from 'json-schema';

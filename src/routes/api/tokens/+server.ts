@@ -1,22 +1,18 @@
-import { getDB } from '$lib/server/db';
+import { getDB } from '#lib/server/db/index.ts';
 import {
 	deleteLoginToken,
 	getTokensByUserId,
 	insertLoginToken
-} from '$lib/server/models/login-token';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { generateLoginToken } from '$lib/server/utils';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+} from '#lib/server/models/login-token.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { generateLoginToken } from '#lib/server/utils.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const GET: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -44,12 +40,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -79,12 +72,9 @@ export const POST: RequestHandler = async ({
 	}
 };
 
-export const DELETE: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const DELETE: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

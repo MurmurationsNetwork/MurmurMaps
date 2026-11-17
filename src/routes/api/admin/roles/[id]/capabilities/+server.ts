@@ -1,19 +1,14 @@
-import { getDB } from '$lib/server/db';
+import { getDB } from '#lib/server/db/index.ts';
 import {
 	getCapabilityIdsByRoleId,
 	updateRoleCapabilities
-} from '$lib/server/models/role-capability';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+} from '#lib/server/models/role-capability.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const GET: RequestHandler = async ({ params, request }) => {
 	const userId = params.id;
 
 	if (!userId) {
@@ -21,7 +16,7 @@ export const GET: RequestHandler = async ({
 	}
 
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -49,11 +44,7 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request,
-	params
-}) => {
+export const POST: RequestHandler = async ({ request, params }) => {
 	const roleId = params.id;
 
 	if (!roleId) {
@@ -61,7 +52,7 @@ export const POST: RequestHandler = async ({
 	}
 
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

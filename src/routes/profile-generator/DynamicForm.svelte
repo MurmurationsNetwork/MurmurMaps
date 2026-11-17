@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ProfileObject } from '$lib/types/profile';
-	import type { Schema } from '$lib/types/schema';
+	import type { ProfileObject } from '#lib/types/profile.d.ts';
+	import type { Schema } from '#lib/types/schema.d.ts';
 
 	import FormField from './FormField.svelte';
 

@@ -1,27 +1,23 @@
-import { PRIVATE_SERVER_KEY } from '$env/static/private';
-import { authenticateRequest } from '$lib/server/auth';
-import { getCapabilitiesByIds } from '$lib/server/models/capability';
-import { getUserIdByPublicKey, insertPublicKey } from '$lib/server/models/public-key';
-import { getCapabilityIdsByRoleIds } from '$lib/server/models/role-capability';
-import { doesNameExist, getUserIdByName, insertUser } from '$lib/server/models/user';
-import { getRoleIdsByUserId, insertUserRole } from '$lib/server/models/user-role';
-import type { UcanCapability } from '$lib/types/ucan';
-import { buildUcanWithCapabilities } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { authenticateRequest } from '#lib/server/auth.ts';
+import { getCapabilitiesByIds } from '#lib/server/models/capability.ts';
+import { getUserIdByPublicKey, insertPublicKey } from '#lib/server/models/public-key.ts';
+import { getCapabilityIdsByRoleIds } from '#lib/server/models/role-capability.ts';
+import { getRoleIdsByUserId, insertUserRole } from '#lib/server/models/user-role.ts';
+import { doesNameExist, getUserIdByName, insertUser } from '#lib/server/models/user.ts';
+import type { UcanCapability } from '#lib/types/ucan.d.ts';
+import { buildUcanWithCapabilities } from '#lib/utils/ucan-utils.server.ts';
+import { PRIVATE_SERVER_KEY } from '$app/env/private';
 import { json } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
 		if (!PRIVATE_SERVER_KEY) {
 			return json({ error: 'Server DID is not configured', success: false }, { status: 500 });
 		}
 
-		const authResult = await authenticateRequest(platform, request, {
+		const authResult = await authenticateRequest(request, {
 			parseBody: true,
 			requiredUserId: false
 		});

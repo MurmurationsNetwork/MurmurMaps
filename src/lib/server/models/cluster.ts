@@ -1,5 +1,5 @@
-import { clusters } from '$lib/server/db/schema';
-import type { ClusterDbUpdateInput, ClusterInsert } from '$lib/types/cluster';
+import { clusters } from '#lib/server/db/schema.ts';
+import type { ClusterDbUpdateInput, ClusterInsert } from '#lib/types/cluster.d.ts';
 import type { D1Result } from '@cloudflare/workers-types';
 import { eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';

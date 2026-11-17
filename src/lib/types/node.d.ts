@@ -1,5 +1,5 @@
-import { nodes } from '$lib/server/db/schema';
-import type { ProfileData } from '$lib/types/profile';
+import { nodes } from '#lib/server/db/schema.ts';
+import type { ProfileData } from '#lib/types/profile.d.ts';
 
 export type Node = typeof nodes.$inferSelect;
 

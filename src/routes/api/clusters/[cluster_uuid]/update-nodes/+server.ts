@@ -1,27 +1,23 @@
-import { getDB } from '$lib/server/db';
-import { getCluster } from '$lib/server/models/cluster';
-import { createJob } from '$lib/server/models/job';
+import { getDB } from '#lib/server/db/index.ts';
+import { getCluster } from '#lib/server/models/cluster.ts';
+import { createJob } from '#lib/server/models/job.ts';
 import {
 	cleanDeletedNodes,
 	getDeletedProfilesFromJobResult,
 	getProfileListFromJobResult,
 	getUnauthoritativeProfilesFromJobResult
-} from '$lib/server/models/node';
-import type { ClusterWithJobUuid } from '$lib/types/cluster';
-import type { JobCreateInput } from '$lib/types/job';
-import { fetchProfiles } from '$lib/utils/profile';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+} from '#lib/server/models/node.ts';
+import type { ClusterWithJobUuid } from '#lib/types/cluster.d.ts';
+import type { JobCreateInput } from '#lib/types/job.d.ts';
+import { fetchProfiles } from '#lib/utils/profile.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { env } from 'cloudflare:workers';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const GET: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -65,13 +61,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const POST: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -117,7 +109,7 @@ export const POST: RequestHandler = async ({
 
 		await createJob(db, job);
 
-		await platform.env.JOB_QUEUE.send({
+		await env.JOB_QUEUE.send({
 			job_uuid: job.jobUuid,
 			type: job.type,
 			target_id: job.targetId,

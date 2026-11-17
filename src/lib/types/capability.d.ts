@@ -1,4 +1,4 @@
-import type { capabilities } from '$lib/server/db/schema';
+import type { capabilities } from '#lib/server/db/schema.ts';
 
 export type Capability = typeof capabilities.$inferSelect;
 

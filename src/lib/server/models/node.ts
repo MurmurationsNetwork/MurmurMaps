@@ -1,6 +1,6 @@
-import { nodes } from '$lib/server/db/schema';
-import type { NodeDbUpdateInput, NodeInsert } from '$lib/types/node';
-import type { Node } from '$lib/types/node';
+import { nodes } from '#lib/server/db/schema.ts';
+import type { NodeDbUpdateInput, NodeInsert } from '#lib/types/node.d.ts';
+import type { Node } from '#lib/types/node.d.ts';
 import type { D1Result } from '@cloudflare/workers-types';
 import { and, count, eq, sql } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';

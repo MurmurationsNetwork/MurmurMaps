@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
-	import { isValidEmail, isValidUrl } from '$lib/utils/validators';
+	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
+	import { isValidEmail, isValidUrl } from '#lib/utils/validators.ts';
 	import type { JSONSchema7 } from 'json-schema';
 
 	let { nodeData, schema }: { nodeData: Record<string, unknown>; schema: JSONSchema7 } = $props();

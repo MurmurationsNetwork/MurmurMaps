@@ -1,6 +1,6 @@
-import { request } from '$lib/api/request';
-import type { ClusterWithJobUuid } from '$lib/types/cluster';
-import type { MapNode, Node, NodeCreateInput, NodeUpdateInput } from '$lib/types/node';
+import { request } from '#lib/api/request.ts';
+import type { ClusterWithJobUuid } from '#lib/types/cluster.d.ts';
+import type { MapNode, Node, NodeCreateInput, NodeUpdateInput } from '#lib/types/node.d.ts';
 
 export const createNode = (
 	clusterUuid: string,

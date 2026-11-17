@@ -1,21 +1,17 @@
-import { getDB } from '$lib/server/db';
+import { getDB } from '#lib/server/db/index.ts';
 import {
 	deleteSourceIndex,
 	getSourceIndexById,
 	getSourceIndexByUrl,
 	updateSourceIndex
-} from '$lib/server/models/source-index';
-import type { SourceIndexDbUpdateInput } from '$lib/types/source-index';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+} from '#lib/server/models/source-index.ts';
+import type { SourceIndexDbUpdateInput } from '#lib/types/source-index.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params
-}) => {
+export const GET: RequestHandler = async ({ params }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const id = parseInt(params.id ?? '');
 
 		if (isNaN(id)) {
@@ -35,13 +31,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const PUT: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request,
-	params
-}) => {
+export const PUT: RequestHandler = async ({ request, params }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const id = parseInt(params.id ?? '');
 
@@ -93,13 +85,9 @@ export const PUT: RequestHandler = async ({
 	}
 };
 
-export const DELETE: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const DELETE: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const id = parseInt(params.id ?? '');
 

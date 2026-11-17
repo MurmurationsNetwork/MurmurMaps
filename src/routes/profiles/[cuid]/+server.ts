@@ -1,18 +1,14 @@
-import { getDB } from '$lib/server/db';
-import { getProfile } from '$lib/server/models/profiles';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getProfile } from '#lib/server/models/profiles.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	params,
-	platform = { env: { DB: {} as D1Database } }
-}) => {
+export const GET: RequestHandler = async ({ params }) => {
 	const { cuid } = params;
 	if (!cuid) {
 		return json({ error: 'Profile CUID is required' }, { status: 400 });
 	}
 
-	const db = getDB(platform.env);
+	const db = getDB();
 
 	try {
 		const profile = await getProfile(db, cuid);

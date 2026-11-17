@@ -1,4 +1,4 @@
-import { isValidBase58btc } from '$lib/utils/base58btc';
+import { isValidBase58btc } from '#lib/utils/base58btc.ts';
 import * as uint8arrays from 'uint8arrays';
 
 /**

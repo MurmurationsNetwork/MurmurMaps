@@ -5,24 +5,24 @@
 		updateProfile,
 		updateProfileNodeId,
 		validateProfile
-	} from '$lib/api/profiles';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { dbStatus } from '$lib/stores/db-status';
+	} from '#lib/api/profiles.ts';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import { dbStatus } from '#lib/stores/db-status.ts';
 	import type {
 		Profile,
 		ProfileCreateInput,
 		ProfileObject,
 		ProfileUpdateInput,
 		ValidationError
-	} from '$lib/types/profile';
-	import type { Schema } from '$lib/types/schema';
-	import { generateSchemaInstance } from '$lib/utils/generator';
-	import { parseRef } from '$lib/utils/parser';
+	} from '#lib/types/profile.d.ts';
+	import type { Schema } from '#lib/types/schema.d.ts';
+	import { generateSchemaInstance } from '#lib/utils/generator.ts';
+	import { parseRef } from '#lib/utils/parser.ts';
 
 	import { onMount } from 'svelte';
 	import { toast } from 'svelte-sonner';

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
 	import {
 		Table,
 		TableBody,
@@ -8,9 +8,9 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
-	import type { Role } from '$lib/types/role';
-	import { formatDate } from '$lib/utils/date';
+	} from '#lib/components/ui/table/index.ts';
+	import type { Role } from '#lib/types/role.d.ts';
+	import { formatDate } from '#lib/utils/date.ts';
 	import { Edit, Plus } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

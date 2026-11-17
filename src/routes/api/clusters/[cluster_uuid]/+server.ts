@@ -1,18 +1,14 @@
-import { getDB } from '$lib/server/db';
-import { deleteCluster, getCluster, updateCluster } from '$lib/server/models/cluster';
-import { deleteNodes } from '$lib/server/models/node';
-import type { ClusterDbUpdateInput, ClusterPublic } from '$lib/types/cluster';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { deleteCluster, getCluster, updateCluster } from '#lib/server/models/cluster.ts';
+import { deleteNodes } from '#lib/server/models/node.ts';
+import type { ClusterDbUpdateInput, ClusterPublic } from '#lib/types/cluster.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params
-}) => {
+export const GET: RequestHandler = async ({ params }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const clusterUuid = params.cluster_uuid;
 
 		if (!clusterUuid) {
@@ -34,13 +30,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const PUT: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',
@@ -89,13 +81,9 @@ export const PUT: RequestHandler = async ({
 	}
 };
 
-export const DELETE: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const DELETE: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { publicKey, error, status } = await authenticateUcanRequest(db, request, {
 			scheme: 'api',

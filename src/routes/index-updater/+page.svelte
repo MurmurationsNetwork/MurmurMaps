@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { deleteIndex, getIndexStatus, postIndex } from '$lib/api/profiles';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import * as Alert from '$lib/components/ui/alert/index.js';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
-	import { sourceIndexStore } from '$lib/stores/source-index';
-	import { userStore } from '$lib/stores/user-store';
+	import { deleteIndex, getIndexStatus, postIndex } from '#lib/api/profiles.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import * as Alert from '#lib/components/ui/alert/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { sourceIndexStore } from '#lib/stores/source-index.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
 	import { CircleAlert, CircleCheck } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

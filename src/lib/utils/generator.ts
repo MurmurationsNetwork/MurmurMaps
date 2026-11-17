@@ -1,5 +1,5 @@
-import type { ProfileArray, ProfileObject } from '$lib/types/profile';
-import type { Field, Schema } from '$lib/types/schema';
+import type { ProfileArray, ProfileObject } from '#lib/types/profile.d.ts';
+import type { Field, Schema } from '#lib/types/schema.d.ts';
 
 export function generateSchemaInstance(
 	schema: Schema | null,

@@ -1,5 +1,5 @@
-import { getCapabilities } from '$lib/api/capabilities';
-import { getRoleCapabilities } from '$lib/api/role';
+import { getCapabilities } from '#lib/api/capabilities.ts';
+import { getRoleCapabilities } from '#lib/api/role.ts';
 
 import type { PageLoad } from './$types';
 

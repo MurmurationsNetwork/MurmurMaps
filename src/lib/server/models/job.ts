@@ -1,5 +1,5 @@
-import { jobs } from '$lib/server/db/schema';
-import type { JobCreateInput } from '$lib/types/job';
+import { jobs } from '#lib/server/db/schema.ts';
+import type { JobCreateInput } from '#lib/types/job.d.ts';
 import { and, eq } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
