@@ -4,7 +4,7 @@ import type { UcanCapability } from '#lib/types/ucan.d.ts';
 import { decompressTokenBrotli } from '#lib/utils/decompress-token.server.ts';
 import {
 	getFirstAudienceFromProof,
-	isUcanExpired,
+	isUcanChainExpired,
 	verifyUcanWithCapabilities
 } from '#lib/utils/ucan-utils.ts';
 import { PRIVATE_SERVER_KEY } from '$app/env/private';
@@ -48,7 +48,7 @@ export async function authenticateUcanRequest(
 
 	const ucanToken = decompressTokenBrotli(compressedToken);
 	const parsedUcan = ucans.parse(ucanToken);
-	if (isUcanExpired(ucanToken)) {
+	if (isUcanChainExpired(ucanToken)) {
 		return { error: 'Token expired', status: 401 };
 	}
 

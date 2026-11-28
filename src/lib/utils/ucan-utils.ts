@@ -46,11 +46,15 @@ export async function issueAccessUcan(
 ): Promise<string> {
 	const didableKey = await toDidableKey(userKeyPair);
 	const currentUcan = ucans.parse(currentToken);
+	const expiration = Math.min(
+		currentUcan.payload.exp,
+		Math.floor(Date.now() / 1000) + lifetimeInSeconds
+	);
 
 	const ucanToken = await ucans.build({
 		issuer: didableKey,
 		audience: PUBLIC_SERVER_DID_KEY,
-		lifetimeInSeconds,
+		expiration,
 		capabilities: currentUcan.payload.att,
 		facts: currentUcan.payload.fct,
 		proofs: [currentToken]
@@ -96,6 +100,34 @@ export function isUcanExpired(encodedUcan: string): boolean {
 		return ucan.payload.exp < now;
 	} catch (error) {
 		console.error('Error parsing UCAN:', error);
+		return true;
+	}
+}
+
+export function isUcanChainExpired(encodedUcan: string): boolean {
+	try {
+		const now = Math.floor(Date.now() / 1000);
+		const tokensToCheck = [encodedUcan];
+		const checkedTokens = new Set<string>();
+
+		while (tokensToCheck.length > 0) {
+			const token = tokensToCheck.pop();
+			if (!token || checkedTokens.has(token)) {
+				continue;
+			}
+
+			checkedTokens.add(token);
+			const ucan = ucans.parse(token);
+			if (ucan.payload.exp < now) {
+				return true;
+			}
+
+			tokensToCheck.push(...(ucan.payload.prf || []));
+		}
+
+		return false;
+	} catch (error) {
+		console.error('Error parsing UCAN proof chain:', error);
 		return true;
 	}
 }

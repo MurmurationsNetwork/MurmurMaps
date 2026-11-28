@@ -165,24 +165,27 @@
 		isSubmitting = true;
 		serviceError = '';
 
-		if (!user) {
-			toast.error('Please log in first.');
-			isSubmitting = false;
-			return;
-		}
-
-		if (!sourceIndexId) {
-			toast.error('Please select a Source Index first.');
-			isSubmitting = false;
-			return;
-		}
-
-		const form = event.target as HTMLFormElement;
-		const formData = new FormData(form);
-		const title = formData.get('title') as string;
-
 		try {
-			let result: { data: Profile; success: boolean; errors?: ValidationError[] } = {
+			if (!user) {
+				toast.error('Please log in first.');
+				return;
+			}
+
+			if (!sourceIndexId) {
+				toast.error('Please select a Source Index first.');
+				return;
+			}
+
+			const form = event.target as HTMLFormElement;
+			const formData = new FormData(form);
+			const title = formData.get('title') as string;
+
+			let result: {
+				data: Profile;
+				success: boolean;
+				error?: string;
+				errors?: ValidationError[];
+			} = {
 				data: {} as Profile,
 				success: false,
 				errors: []
@@ -207,7 +210,7 @@
 				result = await createProfile(profileToSave);
 			}
 
-			if (result.errors) {
+			if (result.errors?.length) {
 				validationErrors = result.errors.map(
 					(error: { source?: { pointer?: string }; title: string; detail: string }) => {
 						const pointer = error.source?.pointer || 'Unknown source';
@@ -222,11 +225,11 @@
 				return;
 			}
 
-			if (result.success) {
-				toast.success('Profile saved successfully!');
-			} else {
-				throw new Error('Unknown error occurred while saving profile');
+			if (!result.success) {
+				throw new Error(result.error || 'Unknown error occurred while saving profile');
 			}
+			toast.success('Profile saved successfully!');
+			profileUpdated();
 
 			if (!result?.data?.cuid) {
 				throw new Error('Profile cuid not found');
@@ -262,11 +265,13 @@
 			resetSchemas();
 		} catch (err) {
 			console.error('Error saving and posting profile:', err);
-			toast.error(err as string);
+			const errorMessage = err instanceof Error ? err.message : String(err);
+			serviceError = errorMessage;
+			scrollToTop();
+			toast.error(errorMessage);
+		} finally {
+			isSubmitting = false;
 		}
-
-		profileUpdated();
-		isSubmitting = false;
 	}
 </script>
 

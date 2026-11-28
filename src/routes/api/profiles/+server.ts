@@ -56,7 +56,7 @@ export const POST: RequestHandler = async ({ request }) => {
 			scheme: 'api',
 			hierPart: '/profiles',
 			namespace: 'profiles',
-			segments: ['GET']
+			segments: ['POST']
 		});
 
 		if (!publicKey) {
