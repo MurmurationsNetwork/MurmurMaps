@@ -1,5 +1,5 @@
-import { request } from '$lib/api/request';
-import type { JobPublic } from '$lib/types/job';
+import { request } from '#lib/api/request.ts';
+import type { JobPublic } from '#lib/types/job.d.ts';
 
 export const getJobByUuidAndTarget = (
 	clusterUuid: string,

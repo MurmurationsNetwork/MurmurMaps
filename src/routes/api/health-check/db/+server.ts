@@ -1,10 +1,9 @@
-import { getDB } from '$lib/server/db';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({ platform = { env: { DB: {} as D1Database } } }) => {
+export const GET: RequestHandler = async () => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		await db.run('SELECT 1');
 		return new Response(JSON.stringify({ status: 'ok' }), { status: 200 });
 	} catch (err) {

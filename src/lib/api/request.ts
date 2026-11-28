@@ -1,16 +1,16 @@
-import { refreshToken } from '$lib/api/auth-request';
-import { getToken } from '$lib/core';
-import { storeToken } from '$lib/core';
-import { getOrCreateKeyPair } from '$lib/crypto';
-import { signRequest } from '$lib/crypto';
-import { exportPublicKey } from '$lib/crypto';
-import { currentTokenStore } from '$lib/stores/token-store';
-import { delegationsStore, rootTokenStore } from '$lib/stores/token-store';
-import type { Meta } from '$lib/types/api';
-import type { IndexNodeMeta } from '$lib/types/index-node';
-import type { ValidationError } from '$lib/types/profile';
-import { compressTokenBrotli } from '$lib/utils/compress-token';
-import { issueAccessUcan } from '$lib/utils/ucan-utils';
+import { refreshToken } from '#lib/api/auth-request.ts';
+import { getToken } from '#lib/core.ts';
+import { storeToken } from '#lib/core.ts';
+import { getOrCreateKeyPair } from '#lib/crypto.ts';
+import { signRequest } from '#lib/crypto.ts';
+import { exportPublicKey } from '#lib/crypto.ts';
+import { currentTokenStore } from '#lib/stores/token-store.ts';
+import { delegationsStore, rootTokenStore } from '#lib/stores/token-store.ts';
+import type { Meta } from '#lib/types/api.d.ts';
+import type { IndexNodeMeta } from '#lib/types/index-node.d.ts';
+import type { ValidationError } from '#lib/types/profile.d.ts';
+import { compressTokenBrotli } from '#lib/utils/compress-token.ts';
+import { issueAccessUcan } from '#lib/utils/ucan-utils.ts';
 
 import { get } from 'svelte/store';
 

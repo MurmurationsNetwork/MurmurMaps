@@ -1,5 +1,5 @@
-import { request } from '$lib/api/request';
-import type { LoginToken } from '$lib/types/token';
+import { request } from '#lib/api/request.ts';
+import type { LoginToken } from '#lib/types/token.d.ts';
 
 export const getTokens = (customFetch?: typeof fetch) =>
 	request<undefined, LoginToken[]>('/api/tokens', 'GET', undefined, customFetch);

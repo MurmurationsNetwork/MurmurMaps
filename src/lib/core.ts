@@ -1,4 +1,4 @@
-import type { Delegation } from '$lib/types/delegation';
+import type { Delegation } from '#lib/types/delegation.d.ts';
 
 function openCoreDB(): Promise<IDBDatabase> {
 	return new Promise((resolve, reject) => {

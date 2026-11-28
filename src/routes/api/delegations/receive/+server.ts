@@ -1,18 +1,14 @@
-import { removeDidPrefix } from '$lib/crypto';
-import { getDB } from '$lib/server/db';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { authenticateUcanRequest, parseUcanDelegation } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { removeDidPrefix } from '#lib/crypto.ts';
+import { getDB } from '#lib/server/db/index.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { authenticateUcanRequest, parseUcanDelegation } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const {
 			publicKey,

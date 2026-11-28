@@ -1,5 +1,5 @@
-import { request, requestWithFormData } from '$lib/api/request';
-import type { Batch } from '$lib/types/batch';
+import { request, requestWithFormData } from '#lib/api/request.ts';
+import type { Batch } from '#lib/types/batch.d.ts';
 
 export const getBatches = (sourceDataProxyUrl: string, customFetch?: typeof fetch) =>
 	request<undefined, Batch[]>(

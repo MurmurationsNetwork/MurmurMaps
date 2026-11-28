@@ -1,18 +1,14 @@
-import { getDB } from '$lib/server/db';
-import { createJob } from '$lib/server/models/job';
-import type { JobCreateInput } from '$lib/types/job';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { createJob } from '#lib/server/models/job.ts';
+import type { JobCreateInput } from '#lib/types/job.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { env } from 'cloudflare:workers';
 
-export const PUT: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const {
 			publicKey,
@@ -55,7 +51,7 @@ export const PUT: RequestHandler = async ({
 
 		await createJob(db, job);
 
-		await platform.env.JOB_QUEUE.send({
+		await env.JOB_QUEUE.send({
 			job_uuid: job.jobUuid,
 			type: job.type,
 			target_id: job.targetId,

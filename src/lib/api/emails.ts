@@ -1,4 +1,4 @@
-import { request } from '$lib/api/request';
+import { request } from '#lib/api/request.ts';
 
 export const getEmails = (customFetch?: typeof fetch) =>
 	request<undefined, { email: string }[]>('/api/emails', 'GET', undefined, customFetch);

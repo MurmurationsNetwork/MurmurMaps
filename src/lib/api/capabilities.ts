@@ -1,5 +1,5 @@
-import { request } from '$lib/api/request';
-import type { Capability, CapabilityCreateInput } from '$lib/types/capability';
+import { request } from '#lib/api/request.ts';
+import type { Capability, CapabilityCreateInput } from '#lib/types/capability.d.ts';
 
 export const getCapabilities = (customFetch?: typeof fetch) =>
 	request<undefined, Capability[]>('/api/admin/capabilities', 'GET', undefined, customFetch);

@@ -1,5 +1,5 @@
-import { request } from '$lib/api/request';
-import type { Role, RoleCreateInput } from '$lib/types/role';
+import { request } from '#lib/api/request.ts';
+import type { Role, RoleCreateInput } from '#lib/types/role.d.ts';
 
 export const getRoles = (customFetch?: typeof fetch) =>
 	request<undefined, Role[]>('/api/admin/roles', 'GET', undefined, customFetch);

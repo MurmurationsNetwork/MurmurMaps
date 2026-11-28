@@ -1,4 +1,4 @@
-import { getUsers } from '$lib/api/users';
+import { getUsers } from '#lib/api/users.ts';
 
 import type { PageLoad } from './$types';
 

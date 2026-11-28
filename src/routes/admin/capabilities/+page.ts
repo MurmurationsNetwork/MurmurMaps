@@ -1,4 +1,4 @@
-import { getCapabilities } from '$lib/api/capabilities';
+import { getCapabilities } from '#lib/api/capabilities.ts';
 
 import type { PageLoad } from './$types';
 

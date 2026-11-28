@@ -1,18 +1,18 @@
 <script lang="ts">
+	import { register } from '#lib/api/auth-request.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import { storeToken } from '#lib/core.ts';
+	import { exportPublicKey, getOrCreateKeyPair, signRequest } from '#lib/crypto.ts';
+	import { rootTokenStore } from '#lib/stores/token-store.ts';
+	import { currentTokenStore } from '#lib/stores/token-store.ts';
+	import type { CryptoKeyPair } from '#lib/types/crypto.d.ts';
+	import { issueAccessUcan } from '#lib/utils/ucan-utils.ts';
 	import { goto } from '$app/navigation';
-	import { register } from '$lib/api/auth-request';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { storeToken } from '$lib/core';
-	import { exportPublicKey, getOrCreateKeyPair, signRequest } from '$lib/crypto';
-	import { rootTokenStore } from '$lib/stores/token-store';
-	import { currentTokenStore } from '$lib/stores/token-store';
-	import type { CryptoKeyPair } from '$lib/types/crypto';
-	import { issueAccessUcan } from '$lib/utils/ucan-utils';
 	import { CircleAlert } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

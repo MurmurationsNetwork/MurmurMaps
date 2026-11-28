@@ -1,7 +1,7 @@
-import type { D1Database } from '@cloudflare/workers-types';
+import { env } from 'cloudflare:workers';
 import { drizzle } from 'drizzle-orm/d1';
 
-export function getDB(env: { DB: D1Database }) {
+export function getDB() {
 	if (!env || !env.DB) {
 		throw new Error('D1 Database binding is missing in the environment variables');
 	}

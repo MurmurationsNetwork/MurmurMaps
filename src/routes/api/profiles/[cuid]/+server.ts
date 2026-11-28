@@ -1,20 +1,15 @@
-import { validateProfile } from '$lib/api/profiles';
-import { getDB } from '$lib/server/db';
-import { deleteProfile, getProfileByCuid, updateProfile } from '$lib/server/models/profiles';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { getSourceIndexById } from '$lib/server/models/source-index';
-import type { ProfileDbUpdateInput, ProfileObject } from '$lib/types/profile';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { validateProfile } from '#lib/api/profiles.ts';
+import { getDB } from '#lib/server/db/index.ts';
+import { deleteProfile, getProfileByCuid, updateProfile } from '#lib/server/models/profiles.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { getSourceIndexById } from '#lib/server/models/source-index.ts';
+import type { ProfileDbUpdateInput, ProfileObject } from '#lib/types/profile.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const GET: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { cuid } = params;
 		if (!cuid) {
@@ -57,13 +52,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const PATCH: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const PATCH: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { cuid } = params;
 
@@ -141,13 +132,9 @@ export const PATCH: RequestHandler = async ({
 	}
 };
 
-export const DELETE: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const DELETE: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { cuid } = params;
 

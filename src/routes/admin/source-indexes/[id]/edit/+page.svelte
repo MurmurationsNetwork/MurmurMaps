@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { updateSourceIndex } from '#lib/api/source-indexes.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import type { SourceIndexUpdateInput } from '#lib/types/source-index.d.ts';
 	import { goto } from '$app/navigation';
-	import { updateSourceIndex } from '$lib/api/source-indexes';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import type { SourceIndexUpdateInput } from '$lib/types/source-index';
 
 	import { untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';

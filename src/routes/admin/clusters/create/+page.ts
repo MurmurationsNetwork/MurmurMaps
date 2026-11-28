@@ -1,6 +1,6 @@
-import { getCountries } from '$lib/api/countries';
-import { getSchemas } from '$lib/api/schemas';
-import { getSourceIndexes } from '$lib/api/source-indexes';
+import { getCountries } from '#lib/api/countries.ts';
+import { getSchemas } from '#lib/api/schemas.ts';
+import { getSourceIndexes } from '#lib/api/source-indexes.ts';
 
 import type { PageLoad } from './$types';
 

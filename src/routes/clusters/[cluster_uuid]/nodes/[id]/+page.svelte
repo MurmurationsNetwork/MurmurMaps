@@ -1,9 +1,9 @@
 <script lang="ts">
-	import NodeDetail from '$lib/components/nodes/NodeDetail.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import type { ClusterPublic } from '$lib/types/cluster';
-	import type { Node } from '$lib/types/node';
+	import NodeDetail from '#lib/components/nodes/NodeDetail.svelte';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import type { ClusterPublic } from '#lib/types/cluster.d.ts';
+	import type { Node } from '#lib/types/node.d.ts';
 	import { ArrowLeft, CircleAlert } from '@lucide/svelte';
 	import type { JSONSchema7 } from 'json-schema';
 

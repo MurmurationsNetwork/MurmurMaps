@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { createRole } from '#lib/api/role.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import type { RoleCreateInput } from '#lib/types/role.d.ts';
 	import { goto } from '$app/navigation';
-	import { createRole } from '$lib/api/role';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import type { RoleCreateInput } from '$lib/types/role';
 
 	import { toast } from 'svelte-sonner';
 

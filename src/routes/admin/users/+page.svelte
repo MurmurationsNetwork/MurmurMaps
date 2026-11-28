@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
+	import { Badge } from '#lib/components/ui/badge/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
 	import {
 		Table,
 		TableBody,
@@ -9,8 +9,8 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
-	import { formatDate } from '$lib/utils/date';
+	} from '#lib/components/ui/table/index.ts';
+	import { formatDate } from '#lib/utils/date.ts';
 	import { SquarePen } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

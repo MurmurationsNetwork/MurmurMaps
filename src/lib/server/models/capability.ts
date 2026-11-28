@@ -1,5 +1,5 @@
-import { capabilities } from '$lib/server/db/schema';
-import type { CapabilityInsert } from '$lib/types/capability';
+import { capabilities } from '#lib/server/db/schema.ts';
+import type { CapabilityInsert } from '#lib/types/capability.d.ts';
 import { and, eq, inArray } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
