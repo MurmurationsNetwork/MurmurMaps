@@ -1,16 +1,16 @@
 <script lang="ts">
+	import { getPublishedNodes } from '#lib/api/nodes.ts';
+	import NodeDetail from '#lib/components/nodes/NodeDetail.svelte';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import * as Pagination from '#lib/components/ui/pagination/index.js';
+	import * as Select from '#lib/components/ui/select/index.ts';
+	import type { Meta } from '#lib/types/api.d.ts';
+	import type { ClusterPublic } from '#lib/types/cluster.d.ts';
+	import type { DropdownField } from '#lib/types/enum-dropdown.d.ts';
+	import type { Node } from '#lib/types/node.d.ts';
 	import { goto } from '$app/navigation';
-	import { getPublishedNodes } from '$lib/api/nodes';
-	import NodeDetail from '$lib/components/nodes/NodeDetail.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import * as Pagination from '$lib/components/ui/pagination/index.js';
-	import * as Select from '$lib/components/ui/select';
-	import type { Meta } from '$lib/types/api';
-	import type { ClusterPublic } from '$lib/types/cluster';
-	import type { DropdownField } from '$lib/types/enum-dropdown';
-	import type { Node } from '$lib/types/node';
 	import { ArrowLeft, CircleAlert, Database, Search, Tag } from '@lucide/svelte';
 	import ChevronLeftIcon from '@lucide/svelte/icons/chevron-left';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
@@ -100,7 +100,7 @@
 			}
 		}
 
-		goto(`?${query.toString()}`, { replaceState: true, noScroll: true });
+		goto(`?${query.toString()}`, { replace: true, reset: false });
 
 		if (cluster?.clusterUuid) {
 			const res = await getPublishedNodes(

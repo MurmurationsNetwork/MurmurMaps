@@ -1,19 +1,14 @@
-import { getDB } from '$lib/server/db';
-import { getCluster } from '$lib/server/models/cluster';
-import { getClusterSchema, insertClusterSchema } from '$lib/server/models/cluster-schema';
-import { getDistinctLinkedSchemas } from '$lib/server/models/node';
-import { getSourceIndexByUrl } from '$lib/server/models/source-index';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getClusterSchema, insertClusterSchema } from '#lib/server/models/cluster-schema.ts';
+import { getCluster } from '#lib/server/models/cluster.ts';
+import { getDistinctLinkedSchemas } from '#lib/server/models/node.ts';
+import { getSourceIndexByUrl } from '#lib/server/models/source-index.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import type { JSONSchema7 } from 'json-schema';
 
-export const GET: RequestHandler = async ({
-	params,
-	platform = { env: { DB: {} as D1Database } },
-	fetch
-}) => {
+export const GET: RequestHandler = async ({ params, fetch }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const clusterUuid = params.cluster_uuid;
 
 		if (!clusterUuid) {

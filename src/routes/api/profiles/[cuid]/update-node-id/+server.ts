@@ -1,17 +1,12 @@
-import { getDB } from '$lib/server/db';
-import { updateProfileNodeId } from '$lib/server/models/profiles';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { updateProfileNodeId } from '#lib/server/models/profiles.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-export const PUT: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const PUT: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { cuid } = params;
 		const { node_id } = await request.json();

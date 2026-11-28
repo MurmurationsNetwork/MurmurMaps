@@ -1,5 +1,5 @@
-import { getRoles } from '$lib/api/role';
-import { getUserRoles } from '$lib/api/users';
+import { getRoles } from '#lib/api/role.ts';
+import { getUserRoles } from '#lib/api/users.ts';
 
 import type { PageLoad } from './$types';
 

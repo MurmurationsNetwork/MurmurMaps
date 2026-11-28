@@ -1,4 +1,4 @@
-import { getToken } from '$lib/core';
+import { getToken } from '#lib/core.ts';
 
 import type { PageLoad } from './$types';
 

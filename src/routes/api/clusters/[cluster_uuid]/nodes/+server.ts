@@ -1,17 +1,13 @@
-import { getDB } from '$lib/server/db';
-import { createNode, getNode, getNodes } from '$lib/server/models/node';
-import type { NodeInsert } from '$lib/types/node';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { createNode, getNode, getNodes } from '#lib/server/models/node.ts';
+import type { NodeInsert } from '#lib/types/node.d.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params
-}) => {
+export const GET: RequestHandler = async ({ params }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 		const clusterUuid = params?.cluster_uuid;
 
 		// Validate clusterUuid
@@ -35,13 +31,9 @@ export const GET: RequestHandler = async ({
 	}
 };
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const POST: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const {
 			publicKey,

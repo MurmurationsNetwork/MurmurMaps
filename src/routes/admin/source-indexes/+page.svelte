@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { deleteSourceIndex } from '$lib/api/source-indexes';
-	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
+	import { deleteSourceIndex } from '#lib/api/source-indexes.ts';
+	import * as AlertDialog from '#lib/components/ui/alert-dialog/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
 	import {
 		Table,
 		TableBody,
@@ -10,8 +10,8 @@
 		TableHead,
 		TableHeader,
 		TableRow
-	} from '$lib/components/ui/table';
-	import type { SourceIndex } from '$lib/types/source-index';
+	} from '#lib/components/ui/table/index.ts';
+	import type { SourceIndex } from '#lib/types/source-index.d.ts';
 	import { Database, Plus, SquarePen, Trash2 } from '@lucide/svelte';
 
 	import { toast } from 'svelte-sonner';

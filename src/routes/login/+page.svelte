@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { linkPublicKey } from '$lib/api/keys';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Button } from '$lib/components/ui/button';
+	import { linkPublicKey } from '#lib/api/keys.ts';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
 	import {
 		Card,
 		CardContent,
 		CardDescription,
 		CardHeader,
 		CardTitle
-	} from '$lib/components/ui/card';
-	import { getKey, removeDidPrefix } from '$lib/crypto';
-	import { toDidableKey } from '$lib/utils/ucan-utils';
+	} from '#lib/components/ui/card/index.ts';
+	import { getKey, removeDidPrefix } from '#lib/crypto.ts';
+	import { toDidableKey } from '#lib/utils/ucan-utils.ts';
 	import { CircleAlert, House } from '@lucide/svelte';
 
 	import { onMount } from 'svelte';

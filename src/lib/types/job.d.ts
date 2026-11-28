@@ -1,4 +1,4 @@
-import { jobs } from '$lib/server/db/schema';
+import { jobs } from '#lib/server/db/schema.ts';
 
 export type Job = typeof jobs.$inferSelect;
 

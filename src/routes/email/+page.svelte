@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { sendResetEmailRequest } from '$lib/api/emails';
-	import { Alert, AlertDescription, AlertTitle } from '$lib/components/ui/alert';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { isValidEmail } from '$lib/utils/validators';
+	import { sendResetEmailRequest } from '#lib/api/emails.ts';
+	import { Alert, AlertDescription, AlertTitle } from '#lib/components/ui/alert/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { isValidEmail } from '#lib/utils/validators.ts';
 	import { CircleAlert, CircleCheck } from '@lucide/svelte';
 
 	let email = $state('');

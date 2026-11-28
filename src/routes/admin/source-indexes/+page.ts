@@ -1,4 +1,4 @@
-import { getSourceIndexes } from '$lib/api/source-indexes';
+import { getSourceIndexes } from '#lib/api/source-indexes.ts';
 
 import type { PageLoad } from './$types';
 

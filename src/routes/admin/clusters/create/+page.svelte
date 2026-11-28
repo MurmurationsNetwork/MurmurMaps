@@ -1,19 +1,19 @@
 <script lang="ts">
+	import { createCluster } from '#lib/api/clusters.ts';
+	import { getCountries } from '#lib/api/countries.ts';
+	import { getSchemas } from '#lib/api/schemas.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.ts';
+	import * as Command from '#lib/components/ui/command/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import * as Popover from '#lib/components/ui/popover/index.ts';
+	import * as Select from '#lib/components/ui/select/index.ts';
+	import type { ClusterCreateInput } from '#lib/types/cluster.d.ts';
+	import { cn } from '#lib/utils.ts';
+	import { fetchProfiles } from '#lib/utils/profile.ts';
 	import { goto } from '$app/navigation';
-	import { createCluster } from '$lib/api/clusters';
-	import { getCountries } from '$lib/api/countries';
-	import { getSchemas } from '$lib/api/schemas';
-	import * as Accordion from '$lib/components/ui/accordion';
-	import { Button } from '$lib/components/ui/button';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import * as Command from '$lib/components/ui/command';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Popover from '$lib/components/ui/popover';
-	import * as Select from '$lib/components/ui/select';
-	import type { ClusterCreateInput } from '$lib/types/cluster';
-	import { cn } from '$lib/utils';
-	import { fetchProfiles } from '$lib/utils/profile';
 	import { Check, ChevronsUpDown } from '@lucide/svelte';
 	import LoaderCircle from '@lucide/svelte/icons/loader-circle';
 

@@ -1,4 +1,4 @@
-import { request } from '$lib/api/request';
+import { request } from '#lib/api/request.ts';
 import type { JSONSchema7 } from 'json-schema';
 
 export const getSchemas = (url: string, customFetch?: typeof fetch) =>

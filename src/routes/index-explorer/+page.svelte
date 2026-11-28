@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { pushState } from '$app/navigation';
-	import { getCountries } from '$lib/api/countries';
-	import { getIndexNodes } from '$lib/api/index-node';
-	import { getSchemas } from '$lib/api/schemas';
-	import * as Accordion from '$lib/components/ui/accordion/index.js';
-	import { Alert, AlertDescription } from '$lib/components/ui/alert';
-	import { Badge } from '$lib/components/ui/badge/index.js';
-	import { Button } from '$lib/components/ui/button/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
-	import * as Pagination from '$lib/components/ui/pagination/index.js';
-	import * as Select from '$lib/components/ui/select/index.js';
-	import * as Table from '$lib/components/ui/table/index.js';
-	import { sourceIndexStore } from '$lib/stores/source-index';
-	import { userStore } from '$lib/stores/user-store';
-	import type { IndexNode, IndexNodeMeta } from '$lib/types/index-node';
-	import type { IndexSearchParams } from '$lib/types/index-search-params';
-	import { formatDate } from '$lib/utils/date';
+	import { getCountries } from '#lib/api/countries.ts';
+	import { getIndexNodes } from '#lib/api/index-node.ts';
+	import { getSchemas } from '#lib/api/schemas.ts';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Alert, AlertDescription } from '#lib/components/ui/alert/index.ts';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import * as Pagination from '#lib/components/ui/pagination/index.js';
+	import * as Select from '#lib/components/ui/select/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { sourceIndexStore } from '#lib/stores/source-index.ts';
+	import { userStore } from '#lib/stores/user-store.ts';
+	import type { IndexNode, IndexNodeMeta } from '#lib/types/index-node.d.ts';
+	import type { IndexSearchParams } from '#lib/types/index-search-params.d.ts';
+	import { formatDate } from '#lib/utils/date.ts';
+	import { goto } from '$app/navigation';
 	import { ChevronLeftIcon, ChevronRightIcon } from '@lucide/svelte';
 
 	import { onMount, tick } from 'svelte';
@@ -209,7 +209,7 @@
 				total_pages: 0
 			};
 
-			pushState(window.location.pathname, '');
+			goto(window.location.pathname, { shallow: true, state: '' });
 		});
 	});
 
@@ -251,7 +251,7 @@
 
 		// Update the URL with the current search parameters
 		const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
-		pushState(newUrl, '');
+		goto(newUrl, { shallow: true, state: '' });
 
 		// Add index_url to the search params
 		if (sourceIndexUrl === '') {

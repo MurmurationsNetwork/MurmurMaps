@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { updateUserRoles } from '#lib/api/users.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
 	import { goto } from '$app/navigation';
-	import { updateUserRoles } from '$lib/api/users';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Label } from '$lib/components/ui/label';
 
 	import { toast } from 'svelte-sonner';
 	import { SvelteSet } from 'svelte/reactivity';

@@ -1,10 +1,9 @@
-import { PRIVATE_RESEND_KEY } from '$env/static/private';
-import { getDB } from '$lib/server/db';
-import { getUserIdByEmail } from '$lib/server/models/email';
-import { insertLoginToken } from '$lib/server/models/login-token';
-import { getByUserId } from '$lib/server/models/user';
-import { generateLoginToken } from '$lib/server/utils';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { getUserIdByEmail } from '#lib/server/models/email.ts';
+import { insertLoginToken } from '#lib/server/models/login-token.ts';
+import { getByUserId } from '#lib/server/models/user.ts';
+import { generateLoginToken } from '#lib/server/utils.ts';
+import { PRIVATE_RESEND_KEY } from '$app/env/private';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 import { Resend } from 'resend';
@@ -15,12 +14,9 @@ if (!PRIVATE_RESEND_KEY) {
 
 const resend = new Resend(PRIVATE_RESEND_KEY);
 
-export const POST: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	request
-}) => {
+export const POST: RequestHandler = async ({ request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const { email } = await request.json();
 

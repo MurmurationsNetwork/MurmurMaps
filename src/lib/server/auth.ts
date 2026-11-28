@@ -1,8 +1,7 @@
-import { getDB } from '$lib/server/db';
-import { verifySignature } from '$lib/server/db/crypto.server';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { isValidBase58btc } from '$lib/utils/base58btc';
-import type { D1Database } from '@cloudflare/workers-types';
+import { verifySignature } from '#lib/server/db/crypto.server.ts';
+import { getDB } from '#lib/server/db/index.ts';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { isValidBase58btc } from '#lib/utils/base58btc.ts';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 
 interface AuthResult {
@@ -13,7 +12,6 @@ interface AuthResult {
 }
 
 export async function authenticateRequest(
-	platform: { env: { DB: D1Database } },
 	request: Request,
 	options?: {
 		parseBody?: boolean;
@@ -22,7 +20,7 @@ export async function authenticateRequest(
 ): Promise<
 	{ success: true; data: AuthResult } | { success: false; error: string; status: number }
 > {
-	const db = getDB(platform.env);
+	const db = getDB();
 	const body = options?.parseBody ? await request.json() : undefined;
 	const xPublicKey = request.headers.get('X-Public-Key');
 	const xSignature = request.headers.get('X-Signature');

@@ -1,4 +1,4 @@
-import { PUBLIC_TOOLS_URL } from '$env/static/public';
+import { PUBLIC_TOOLS_URL } from '$app/env/public';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ params, url }) => {

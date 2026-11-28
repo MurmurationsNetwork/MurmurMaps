@@ -1,13 +1,13 @@
 <script lang="ts">
+	import { getPublishedMapNodes } from '#lib/api/nodes.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import * as Select from '#lib/components/ui/select/index.ts';
+	import { Map, MarkerCluster, TileLayer } from '#lib/svelte-leaflet/index.ts';
+	import type { DropdownField } from '#lib/types/enum-dropdown.d.ts';
+	import type { MapNode } from '#lib/types/node.d.ts';
 	import { goto } from '$app/navigation';
-	import { getPublishedMapNodes } from '$lib/api/nodes';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import * as Select from '$lib/components/ui/select';
-	import { Map, MarkerCluster, TileLayer } from '$lib/svelte-leaflet';
-	import type { DropdownField } from '$lib/types/enum-dropdown';
-	import type { MapNode } from '$lib/types/node';
 	import { CircleAlert, Search, Tag } from '@lucide/svelte';
 	import L, { MarkerClusterGroup } from 'leaflet';
 
@@ -100,7 +100,7 @@
 			}
 		}
 
-		goto(`?${query.toString()}`, { replaceState: true, noScroll: true });
+		goto(`?${query.toString()}`, { replace: true, reset: false });
 
 		if (cluster?.clusterUuid) {
 			const { data: mapNodes } = await getPublishedMapNodes(

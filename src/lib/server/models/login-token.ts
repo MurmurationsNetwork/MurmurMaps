@@ -1,4 +1,4 @@
-import { loginTokens } from '$lib/server/db/schema';
+import { loginTokens } from '#lib/server/db/schema.ts';
 import { and, desc, eq, gt, lt, sql } from 'drizzle-orm';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

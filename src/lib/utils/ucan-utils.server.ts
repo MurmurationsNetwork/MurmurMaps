@@ -1,13 +1,13 @@
-import { PRIVATE_SERVER_KEY } from '$env/static/private';
-import { getUserIdByPublicKey } from '$lib/server/models/public-key';
-import { getPermissionsVersionByUserId } from '$lib/server/models/user';
-import type { UcanCapability } from '$lib/types/ucan';
-import { decompressTokenBrotli } from '$lib/utils/decompress-token.server';
+import { getUserIdByPublicKey } from '#lib/server/models/public-key.ts';
+import { getPermissionsVersionByUserId } from '#lib/server/models/user.ts';
+import type { UcanCapability } from '#lib/types/ucan.d.ts';
+import { decompressTokenBrotli } from '#lib/utils/decompress-token.server.ts';
 import {
 	getFirstAudienceFromProof,
 	isUcanExpired,
 	verifyUcanWithCapabilities
-} from '$lib/utils/ucan-utils';
+} from '#lib/utils/ucan-utils.ts';
+import { PRIVATE_SERVER_KEY } from '$app/env/private';
 import * as ucans from '@ucans/ucans';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 

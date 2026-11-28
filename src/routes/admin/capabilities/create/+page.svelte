@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { createCapability } from '#lib/api/capabilities.ts';
+	import { Button } from '#lib/components/ui/button/index.ts';
+	import { Card, CardContent, CardHeader, CardTitle } from '#lib/components/ui/card/index.ts';
+	import { Input } from '#lib/components/ui/input/index.ts';
+	import { Label } from '#lib/components/ui/label/index.ts';
+	import * as Select from '#lib/components/ui/select/index.js';
+	import type { CapabilityCreateInput } from '#lib/types/capability.d.ts';
 	import { goto } from '$app/navigation';
-	import { createCapability } from '$lib/api/capabilities';
-	import { Button } from '$lib/components/ui/button';
-	import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Select from '$lib/components/ui/select/index.js';
-	import type { CapabilityCreateInput } from '$lib/types/capability';
 
 	import { toast } from 'svelte-sonner';
 

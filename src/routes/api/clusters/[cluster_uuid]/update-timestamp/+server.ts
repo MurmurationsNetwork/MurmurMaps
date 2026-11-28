@@ -1,17 +1,12 @@
-import { getDB } from '$lib/server/db';
-import { updateClusterTimestamp } from '$lib/server/models/cluster';
-import { authenticateUcanRequest } from '$lib/utils/ucan-utils.server';
-import type { D1Database } from '@cloudflare/workers-types';
+import { getDB } from '#lib/server/db/index.ts';
+import { updateClusterTimestamp } from '#lib/server/models/cluster.ts';
+import { authenticateUcanRequest } from '#lib/utils/ucan-utils.server.ts';
 import type { RequestHandler } from '@sveltejs/kit';
 import { json } from '@sveltejs/kit';
 
-export const PATCH: RequestHandler = async ({
-	platform = { env: { DB: {} as D1Database } },
-	params,
-	request
-}) => {
+export const PATCH: RequestHandler = async ({ params, request }) => {
 	try {
-		const db = getDB(platform.env);
+		const db = getDB();
 
 		const {
 			publicKey,
